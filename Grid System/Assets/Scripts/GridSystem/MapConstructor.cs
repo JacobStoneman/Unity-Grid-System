@@ -15,24 +15,26 @@ public class MapConstructor
 	public MapConstructor()
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
-		CellSize = new Vector3(1,1,1);
+		//CellSize = new Vector3(1,1,1);
 		Layout = CellLayout.Rectangle;
 		Swizzle = CellSwizzle.XYZ;
 	}
 
-	public MapConstructor(Vector3 cellSize, CellLayout layout, CellSwizzle swizzle)
+	public MapConstructor(CellLayout layout, CellSwizzle swizzle)
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
-		CellSize = cellSize;
+		//CellSize = cellSize;
 		Layout = layout;
 		Swizzle = swizzle;
 	}
 
-	public Vector3 CellSize
-	{
-		get { return CellSize; }
-		private set { _baseGrid.cellSize = value; }
-	}
+	//TODO: Reimplement when tile scaling issue is fixed
+	//public Vector3 CellSize
+	//{
+	//	get { return CellSize; }
+	//	private set { _baseGrid.cellSize = value; }
+	//}
+
 	public CellLayout Layout
 	{
 		get { return Layout; }
@@ -70,6 +72,13 @@ public class MapConstructor
 	public void CreateTestMap(TileResourceLoader loader)
 	{
 		CreateEmptyMap("TestMap");
+
+		int count = loader.TileAssets.Count;
+
+		for(int i = 0; i < count; i++)
+		{
+			_map.SetTile(new Vector3Int(i, 0, 0), loader.TileAssets[i]);
+		}
 
 	}
 }
