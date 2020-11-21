@@ -9,6 +9,7 @@ public class MapConstructor
 	private Grid _baseGrid;
 	private Tilemap _map;
 
+	public List<Tile> TileTypes { get;set; }
 	public List<MapTile> AllTiles { get; private set; }
 
 	public MapConstructor()
@@ -45,7 +46,13 @@ public class MapConstructor
 
 	public Vector3Int GetGridPosFromLocalCoords(Vector3 coords) => _baseGrid.LocalToCell(coords);
 	public Vector3Int GetGridPosFromWorldCoords(Vector3 coords) => _baseGrid.WorldToCell(coords);
-	public Vector3Int GetGridPosFromMousePos() => _baseGrid.LocalToCell(Input.mousePosition);
+
+	//TODO: This will not work with different cell swizzles
+	public Vector3Int GetGridPosFromMousePos()
+	{
+		Vector3Int gridCoord =_baseGrid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+		return new Vector3Int(gridCoord.x, gridCoord.y, 0);
+	}
 
 	public void CreateEmptyMap(string mapName)
 	{
@@ -54,8 +61,7 @@ public class MapConstructor
 		_map.gameObject.transform.SetParent(_baseGrid.gameObject.transform);
 	}
 
-	//TODO: This may not be necessary
-	public void CompressMap()
+	private void CompressMap()
 	{
 		_map.origin = new Vector3Int(0, 0, 0);
 		_map.CompressBounds();

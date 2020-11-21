@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class MapTile
 {
 	public Vector3Int TilePos;
-	public int TileType; //TODO: Revisit this
+	public Tile TileType;
+	public int TileTypeInt; //TODO: Revisit this
 }
