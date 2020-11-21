@@ -66,4 +66,10 @@ public class MapConstructor
 		_map.origin = new Vector3Int(0, 0, 0);
 		_map.CompressBounds();
 	}
+
+	public void CreateTestMap(TileResourceLoader loader)
+	{
+		CreateEmptyMap("TestMap");
+
+	}
 }

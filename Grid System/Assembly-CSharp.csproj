@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Controller.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapConstructor.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapTile.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\TileResourceLoader.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Jacob/Documents/Files/Unity/Projects/Grid System/Grid System/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
