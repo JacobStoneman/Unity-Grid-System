@@ -12,22 +12,22 @@ public class MapManager
 	public List<Tile> TileTypes { get;set; }
 	public List<MapTile> AllTiles { get; private set; }
 
-	public MapManager(string path)
+	public MapManager()
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
 		//CellSize = new Vector3(1,1,1);
 		Layout = CellLayout.Rectangle;
 		Swizzle = CellSwizzle.XYZ;
-		_mapBuilder = new MapBuilder(new TileResourceLoader(path));
+		_mapBuilder = new MapBuilder();
 	}
 
-	public MapManager(string path, CellLayout layout, CellSwizzle swizzle)
+	public MapManager(CellLayout layout, CellSwizzle swizzle)
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
 		//CellSize = cellSize;
 		Layout = layout;
 		Swizzle = swizzle;
-		_mapBuilder = new MapBuilder(new TileResourceLoader(path));
+		_mapBuilder = new MapBuilder();
 	}
 
 	//TODO: Reimplement when tile scaling issue is fixed
@@ -58,6 +58,6 @@ public class MapManager
 		return new Vector3Int(gridCoord.x, gridCoord.y, 0);
 	}
 
-	public void CreateTestMap() => _mapBuilder.CreateTestMap(_baseGrid);
+	public void CreateTestMap(string path) => _mapBuilder.CreateTestMap(path,_baseGrid);
 	public void CreateMapFromPath(string mapName, string path) => _mapBuilder.CreateMapFromPath(mapName, path, _baseGrid);
 }
