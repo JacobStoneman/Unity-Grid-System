@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEngine.GridLayout;
 
-public class MapBuilder
+//TODO: This should abstract to enforce child class is used
+public abstract class MapBuilder : IMapBuilder
 {
-	private TileResourceLoader _loader;
+	protected TileResourceLoader _loader;
 	public Tilemap Map { get; private set; }
 	private CellSwizzle _swizzle;
 
+	//TODO: Needs some way of setting up anchor
 	public MapBuilder(CellSwizzle swizzle)
 	{
 		_swizzle = swizzle;
+		Anchor = new Vector3(0.5f, 0.5f);
 	}
+
+	public Vector3 Anchor { get; set; }
 
 	private void SetOrientation()
 	{
@@ -53,7 +57,7 @@ public class MapBuilder
 	/// </summary>
 	/// <param name="path"> The path to the json file relative to the Resource folder</param>
 	/// <returns>The data for the map including the tile assets and data for each grid position</returns>
-	private MapData ReadMapData(string path)
+	protected MapData ReadMapData(string path)
 	{
 		TextAsset jsonFile = (TextAsset)Resources.Load(path, typeof(TextAsset));
 		MapData loadedData = JsonUtility.FromJson<MapData>(jsonFile.text);
@@ -61,15 +65,16 @@ public class MapBuilder
 		return loadedData;
 	}
 
-	private void CreateEmptyMap(string mapName, Grid parent)
+	//TODO: These should be fine for all Map types
+	protected void CreateEmptyMap(string mapName, Grid parent)
 	{
 		Map = new GameObject(mapName).AddComponent<Tilemap>();
 		SetOrientation();
+		Map.tileAnchor = Anchor;
 		Map.gameObject.AddComponent<TilemapRenderer>();
 		Map.gameObject.transform.SetParent(parent.gameObject.transform);
 	}
-
-	public void CreateTestMap(string path, Grid parent )
+	public void CreateTestMap(string path, Grid parent)
 	{
 		ReadMapData(path);
 		CreateEmptyMap("TestMap", parent);
@@ -82,30 +87,5 @@ public class MapBuilder
 		}
 	}
 
-	public void CreateMapFromPath(string mapName, string path, Grid parent)
-	{
-		MapData data = ReadMapData(path);
-		CreateEmptyMap(mapName, parent);
-
-		int yIndex = 0;
-		for(int i = 0; i < data.Data.Length; i++)
-		{
-			if (i != 0 && i % data.xLength == 0)
-			{
-				yIndex++;
-			}
-			if (data.Data[i] != 0 && data.Data[i] <= _loader.TileAssets.Count)
-			{
-				Map.SetTile(new Vector3Int(i - (yIndex*data.xLength), yIndex, 0), _loader.TileAssets[data.Data[i]-1]);
-			}
-		}
-	}
-}
-
-[Serializable]
-public class MapData
-{
-	public string Path;
-	public int xLength;
-	public int[] Data;
+	public abstract void CreateMapFromJson(string mapName, string path, Grid parent);
 }

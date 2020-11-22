@@ -64,9 +64,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controller.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapBuilder\HexagonMapBuilder.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapBuilder\Interfaces\IHexagonMapBuilder.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapBuilder\Interfaces\IMapBuilder.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapBuilder\Interfaces\IRectangleMapBuilder.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapBuilder\MapBuilder.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapBuilder\RectangleMapBuilder.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapData.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapManager\HexagonMapManager.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapManager\MapManager.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapManager\RectangleMapManager.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapTile.cs" />
     <Compile Include="Assets\Scripts\GridSystem\TileResourceLoader.cs" />
     <Reference Include="Unity.Timeline.Editor">

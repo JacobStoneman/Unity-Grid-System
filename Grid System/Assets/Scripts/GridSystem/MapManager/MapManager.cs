@@ -4,21 +4,22 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEngine.GridLayout;
 
-public class MapManager
+//TODO: This should abstract to enforce child class is used
+public abstract class MapManager
 {
-	public MapBuilder _mapBuilder;
-	private Grid _baseGrid;
+	protected Grid _baseGrid;
+	
+	protected IMapBuilder _mapBuilder;
 
 	public List<Tile> TileTypes { get;set; }
 	public List<MapTile> AllTiles { get; private set; }
 
-	public MapManager()
+	public MapManager(CellLayout layout)
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
 		//CellSize = new Vector3(1,1,1);
-		Layout = CellLayout.Rectangle;
+		Layout = layout;
 		Swizzle = CellSwizzle.XYZ;
-		_mapBuilder = new MapBuilder(CellSwizzle.XYZ);
 	}
 
 	public MapManager(CellLayout layout, CellSwizzle swizzle)
@@ -27,7 +28,6 @@ public class MapManager
 		//CellSize = cellSize;
 		Layout = layout;
 		Swizzle = swizzle;
-		_mapBuilder = new MapBuilder(swizzle);
 	}
 
 	//TODO: Reimplement when tile scaling issue is fixed
@@ -59,5 +59,6 @@ public class MapManager
 	}
 
 	public void CreateTestMap(string path) => _mapBuilder.CreateTestMap(path,_baseGrid);
-	public void CreateMapFromPath(string mapName, string path) => _mapBuilder.CreateMapFromPath(mapName, path, _baseGrid);
+
+	public void CreateMapFromJson(string mapName, string path) => _mapBuilder.CreateMapFromJson(mapName, path, _baseGrid);
 }
