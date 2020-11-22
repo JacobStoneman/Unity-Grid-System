@@ -1,5 +1,9 @@
 # Unity Grid System
+## TODO
+- Rewrite tile resource loading to use the resource folders
+
 ## Notes
+
 - All GameObjects that exist on the map should implement an IMove interface which controls their movement between grid cells
 - CompressMap should be a private method called only when custom map building is involved
 

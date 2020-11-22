@@ -6,28 +6,28 @@ using static UnityEngine.GridLayout;
 
 public class MapManager
 {
-	public MapBuilder _mapBuilder = new MapBuilder();
-
+	public MapBuilder _mapBuilder;
 	private Grid _baseGrid;
-	private Tilemap _map;
 
 	public List<Tile> TileTypes { get;set; }
 	public List<MapTile> AllTiles { get; private set; }
 
-	public MapManager()
+	public MapManager(string path)
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
 		//CellSize = new Vector3(1,1,1);
 		Layout = CellLayout.Rectangle;
 		Swizzle = CellSwizzle.XYZ;
+		_mapBuilder = new MapBuilder(new TileResourceLoader(path));
 	}
 
-	public MapManager(CellLayout layout, CellSwizzle swizzle)
+	public MapManager(string path, CellLayout layout, CellSwizzle swizzle)
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
 		//CellSize = cellSize;
 		Layout = layout;
 		Swizzle = swizzle;
+		_mapBuilder = new MapBuilder(new TileResourceLoader(path));
 	}
 
 	//TODO: Reimplement when tile scaling issue is fixed
@@ -58,5 +58,6 @@ public class MapManager
 		return new Vector3Int(gridCoord.x, gridCoord.y, 0);
 	}
 
-	public void CreateTestMap(TileResourceLoader loader) => _mapBuilder.CreateTestMap(loader, _baseGrid);
+	public void CreateTestMap() => _mapBuilder.CreateTestMap(_baseGrid);
+	public void CreateMapFromPath(string mapName, string path) => _mapBuilder.CreateMapFromPath(mapName, path, _baseGrid);
 }
