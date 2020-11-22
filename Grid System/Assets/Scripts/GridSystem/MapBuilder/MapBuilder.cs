@@ -92,4 +92,6 @@ public abstract class MapBuilder : IMapBuilder
 	}
 
 	public abstract void CreateMapFromJson(string mapName, string path, Grid parent);
+	public Vector3Int GetMapSize() => Map.size;
+	public List<Tile> GetTileAssets() => _loader.TileAssets;
 }

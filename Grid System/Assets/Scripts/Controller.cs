@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Controller : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class Controller : MonoBehaviour
 
 		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX);
         HexagonMap.CreateMapFromJson("hexMap","HexBoard/HexBoard");
+
+        List<Tile> assets = RectangleMap.GetTileAssets();
+        print(RectangleMap.GetMapSize());
+
     }
 
 	private void Update()

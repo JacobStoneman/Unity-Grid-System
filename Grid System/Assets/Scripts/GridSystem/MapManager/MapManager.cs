@@ -55,7 +55,12 @@ public abstract class MapManager
 		return new Vector3Int(gridCoord.x, gridCoord.y, 0);
 	}
 
+	public List<Tile> GetTileAssets() => _mapBuilder.GetTileAssets();
 	public void CreateTestMap(string path) => _mapBuilder.CreateTestMap(path,_baseGrid);
 
 	public void CreateMapFromJson(string mapName, string path) => _mapBuilder.CreateMapFromJson(mapName, path, _baseGrid);
+
+	public Vector3Int GetMapSize() => _mapBuilder.GetMapSize();
+	
+	public void SetTileAtPos(Vector3Int gridPos){}
 }
