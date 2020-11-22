@@ -64,8 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controller.cs" />
-    <Compile Include="Assets\Scripts\GridSystem\MapBuilder.cs" />
-    <Compile Include="Assets\Scripts\GridSystem\MapManager.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapBuilder\MapBuilder.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapBuilder\RectangleMapBuilder.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapManager\MapManager.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapTile.cs" />
     <Compile Include="Assets\Scripts\GridSystem\TileResourceLoader.cs" />
     <Reference Include="Unity.Timeline.Editor">

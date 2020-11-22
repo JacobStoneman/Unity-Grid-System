@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -26,6 +24,4 @@ public class TileResourceLoader
 			TileAssets.Add((Tile)obj);
 		}
 	}
-
-
 }
