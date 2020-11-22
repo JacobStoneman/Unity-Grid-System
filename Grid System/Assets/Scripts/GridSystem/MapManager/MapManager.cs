@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEngine.GridLayout;
 
-//TODO: This should abstract to enforce child class is used
 public abstract class MapManager
 {
 	protected Grid _baseGrid;
@@ -17,7 +16,6 @@ public abstract class MapManager
 	public MapManager(CellLayout layout)
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
-		//CellSize = new Vector3(1,1,1);
 		Layout = layout;
 		Swizzle = CellSwizzle.XYZ;
 	}
@@ -25,12 +23,11 @@ public abstract class MapManager
 	public MapManager(CellLayout layout, CellSwizzle swizzle)
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
-		//CellSize = cellSize;
 		Layout = layout;
 		Swizzle = swizzle;
 	}
 
-	//TODO: Reimplement when tile scaling issue is fixed
+	//TODO: To properly implement this, setOrientation needs to be replaced with a customOrientation method
 	//public Vector3 CellSize
 	//{
 	//	get { return CellSize; }

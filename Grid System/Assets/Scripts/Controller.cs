@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    RectangleMapManager Map;
-    HexagonMapManager Map2;
+    RectangleMapManager RectangleMap;
+    HexagonMapManager HexagonMap;
     void Awake()
     {
-        Map = new RectangleMapManager(GridLayout.CellSwizzle.XYZ);
-        Map.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
+		RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.XYZ);
+		RectangleMap.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
 
-        Map2 = new HexagonMapManager(GridLayout.CellSwizzle.XYZ);
-        Map2.CreateTestMap("HexBoard/HexBoard");
+		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX);
+        HexagonMap.CreateMapFromJson("hexMap","HexBoard/HexBoard");
     }
 
 	private void Update()
 	{
-
+        
 	}
 }

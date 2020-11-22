@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEngine.GridLayout;
 
-//TODO: This should abstract to enforce child class is used
 public abstract class MapBuilder : IMapBuilder
 {
 	protected TileResourceLoader _loader;
@@ -65,7 +64,6 @@ public abstract class MapBuilder : IMapBuilder
 		return loadedData;
 	}
 
-	//TODO: These should be fine for all Map types
 	protected void CreateEmptyMap(string mapName, Grid parent)
 	{
 		Map = new GameObject(mapName).AddComponent<Tilemap>();
@@ -74,6 +72,12 @@ public abstract class MapBuilder : IMapBuilder
 		Map.gameObject.AddComponent<TilemapRenderer>();
 		Map.gameObject.transform.SetParent(parent.gameObject.transform);
 	}
+
+	/// <summary>
+	/// Generates one of each tile read in from the given path
+	/// </summary>
+	/// <param name="path"> The path to the json file relative to the Resource folder</param>
+	/// <param name="parent"> The underlying grid the tilemap object is a child of</param>
 	public void CreateTestMap(string path, Grid parent)
 	{
 		ReadMapData(path);

@@ -15,11 +15,11 @@
 
 - Construct a new map object and call the CreateMapFromPath method passing in the name and path
 ```cs
-    MapManager Map;
+    RectangleMapManager Map;
     void Awake()
     {
-        Map = new MapManager(GridLayout.CellLayout.Rectangle, GridLayout.CellSwizzle.XYZ);
-        Map.CreateMapFromPath("pathMap", "CheckerBoard/CheckerBoard");
+        Map = new RectangleMapManager(GridLayout.CellSwizzle.XYZ);
+        Map.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
     }
 ```
 
