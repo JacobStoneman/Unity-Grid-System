@@ -1,6 +1,34 @@
 # Unity Grid System
+## Walkthrough
+### Loading prebuilt grid
+- json file should exist in Resource folder
+```json
+{
+  "Path": "CheckerBoard/Tiles",
+  "xLength": 8,
+  "Data": [ 1, 2, 1, 2, ...]
+}
+```
+- Path refers to directory containing tiles to use (in Resources folder)
+- xLength determines the length of the grid before beginning on next row above
+- Data determines the placement of tiles - each number is a tile based on its position in the directory, any other numbers will be empty grid spaces
+
+- Construct a new map object and call the CreateMapFromPath method passing in the name and path
+```cs
+    MapManager Map;
+    void Awake()
+    {
+        Map = new MapManager(GridLayout.CellLayout.Rectangle, GridLayout.CellSwizzle.XYZ);
+        Map.CreateMapFromPath("pathMap", "CheckerBoard/CheckerBoard");
+    }
+```
+
+
+
+
 ## TODO
-- Rewrite tile resource loading to use the resource folders
+
+- -
 
 ## Notes
 
