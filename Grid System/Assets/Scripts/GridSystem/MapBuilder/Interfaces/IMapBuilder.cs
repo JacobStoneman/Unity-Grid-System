@@ -11,4 +11,6 @@ public interface IMapBuilder
 	void CreateMapFromJson(string mapName, string path, Grid parent);
 	Dictionary<string,Tile> GetTileAssets();
 	Vector3Int GetMapSize();
+	void SetTileAtPos(Vector3Int gridPos, string asset);
+	void SetRandomTileAtPos(Vector3Int gridPos);
 }

@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Controller : MonoBehaviour
 {
     RectangleMapManager RectangleMap;
     HexagonMapManager HexagonMap;
+
+    
+
     void Awake()
     {
 		RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.XYZ);
@@ -14,8 +16,22 @@ public class Controller : MonoBehaviour
 
 		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX);
         HexagonMap.CreateMapFromJson("hexMap","HexBoard/HexBoard");
-
     }
+
+	private void Start()
+	{
+		StartCoroutine(SetRandomOnTimer(0.005f, RectangleMap, RectangleMap.GetMapSize()));
+		StartCoroutine(SetRandomOnTimer(0.005f, HexagonMap, HexagonMap.GetMapSize()));
+	}
+
+	IEnumerator SetRandomOnTimer(float duration, MapManager manager, Vector3Int size)
+	{
+		while (true)
+		{
+			manager.SetRandomTileAtPos(new Vector3Int(Random.Range(0, size.x), Random.Range(0, size.y), 0));
+			yield return new WaitForSeconds(duration);
+		}
+	}
 
 	private void Update()
 	{

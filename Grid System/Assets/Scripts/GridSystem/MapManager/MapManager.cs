@@ -45,22 +45,18 @@ public abstract class MapManager
 		private set { _baseGrid.cellSwizzle = value; }
 	}
 
-	public Vector3Int GetGridPosFromLocalCoords(Vector3 coords) => _baseGrid.LocalToCell(coords);
-	public Vector3Int GetGridPosFromWorldCoords(Vector3 coords) => _baseGrid.WorldToCell(coords);
-
 	//TODO: This will not work with different cell swizzles
 	public Vector3Int GetGridPosFromMousePos()
 	{
 		Vector3Int gridCoord =_baseGrid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 		return new Vector3Int(gridCoord.x, gridCoord.y, 0);
 	}
-
+	public Vector3Int GetGridPosFromLocalCoords(Vector3 coords) => _baseGrid.LocalToCell(coords);
+	public Vector3Int GetGridPosFromWorldCoords(Vector3 coords) => _baseGrid.WorldToCell(coords);
 	public Dictionary<string,Tile> GetTileAssets() => _mapBuilder.GetTileAssets();
 	public void CreateTestMap(string path) => _mapBuilder.CreateTestMap(path,_baseGrid);
-
 	public void CreateMapFromJson(string mapName, string path) => _mapBuilder.CreateMapFromJson(mapName, path, _baseGrid);
-
 	public Vector3Int GetMapSize() => _mapBuilder.GetMapSize();
-	
-	public void SetTileAtPos(Vector3Int gridPos){}
+	public void SetTileAtPos(Vector3Int gridPos, string asset) => _mapBuilder.SetTileAtPos(gridPos, asset);
+	public void SetRandomTileAtPos(Vector3Int gridPos) => _mapBuilder.SetRandomTileAtPos(gridPos);
 }

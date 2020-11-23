@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEngine.GridLayout;
+using System.Linq;
 
 public abstract class MapBuilder : IMapBuilder
 {
 	protected TileResourceLoader _loader;
 	public Tilemap Map { get; private set; }
 	private CellSwizzle _swizzle;
+	System.Random rand = new System.Random();
 
 	//TODO: Needs some way of setting up anchor
 	public MapBuilder(CellSwizzle swizzle)
@@ -89,16 +91,12 @@ public abstract class MapBuilder : IMapBuilder
 			Map.SetTile(new Vector3Int(index, 0, 0), tile.Value);
 			index++;
 		}
-
-		//int count = _loader.TileAssets.Count;
-
-		//for (int i = 0; i < count; i++)
-		//{
-		//	Map.SetTile(new Vector3Int(i, 0, 0), _loader.TileAssets[i]);
-		//}
 	}
 
 	public abstract void CreateMapFromJson(string mapName, string path, Grid parent);
 	public Vector3Int GetMapSize() => Map.size;
 	public Dictionary<string,Tile> GetTileAssets() => _loader.TileAssets;
+
+	public void SetTileAtPos(Vector3Int gridPos, string asset) => Map.SetTile(gridPos, _loader.TileAssets[asset]);
+	public void SetRandomTileAtPos(Vector3Int gridPos) => Map.SetTile(gridPos, _loader.TileAssets.ElementAt(rand.Next(0, _loader.TileAssets.Count)).Value);
 }
