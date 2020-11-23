@@ -9,6 +9,6 @@ public interface IMapBuilder
 {
 	void CreateTestMap(string path, Grid parent);
 	void CreateMapFromJson(string mapName, string path, Grid parent);
-	List<Tile> GetTileAssets();
+	Dictionary<string,Tile> GetTileAssets();
 	Vector3Int GetMapSize();
 }

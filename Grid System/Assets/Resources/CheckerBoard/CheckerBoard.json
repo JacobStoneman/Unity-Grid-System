@@ -1,5 +1,5 @@
 {
   "Path": "CheckerBoard/Tiles",
   "xLength": 8,
-  "Data": [ 1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1 ]
+  "Data": [ "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1" ]
 }

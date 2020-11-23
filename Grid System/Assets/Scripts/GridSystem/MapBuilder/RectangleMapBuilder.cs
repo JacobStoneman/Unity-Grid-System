@@ -20,9 +20,9 @@ public class RectangleMapBuilder : MapBuilder, IRectangleMapBuilder
 			{
 				yIndex++;
 			}
-			if (data.Data[i] != 0 && data.Data[i] <= _loader.TileAssets.Count)
+			if (_loader.TileAssets.ContainsKey(data.Data[i]))
 			{
-				Map.SetTile(new Vector3Int(i - (yIndex * data.xLength), yIndex, 0), _loader.TileAssets[data.Data[i] - 1]);
+				Map.SetTile(new Vector3Int(i - (yIndex * data.xLength), yIndex, 0), _loader.TileAssets[data.Data[i]]);
 			}
 		}
 	}

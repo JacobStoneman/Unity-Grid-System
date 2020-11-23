@@ -15,9 +15,6 @@ public class Controller : MonoBehaviour
 		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX);
         HexagonMap.CreateMapFromJson("hexMap","HexBoard/HexBoard");
 
-        List<Tile> assets = RectangleMap.GetTileAssets();
-        print(RectangleMap.GetMapSize());
-
     }
 
 	private void Update()

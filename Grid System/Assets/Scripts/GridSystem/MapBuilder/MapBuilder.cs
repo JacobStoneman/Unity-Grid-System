@@ -83,15 +83,22 @@ public abstract class MapBuilder : IMapBuilder
 		ReadMapData(path);
 		CreateEmptyMap("TestMap", parent);
 
-		int count = _loader.TileAssets.Count;
-
-		for (int i = 0; i < count; i++)
+		int index = 0;
+		foreach(KeyValuePair<string, Tile> tile in _loader.TileAssets)
 		{
-			Map.SetTile(new Vector3Int(i, 0, 0), _loader.TileAssets[i]);
+			Map.SetTile(new Vector3Int(index, 0, 0), tile.Value);
+			index++;
 		}
+
+		//int count = _loader.TileAssets.Count;
+
+		//for (int i = 0; i < count; i++)
+		//{
+		//	Map.SetTile(new Vector3Int(i, 0, 0), _loader.TileAssets[i]);
+		//}
 	}
 
 	public abstract void CreateMapFromJson(string mapName, string path, Grid parent);
 	public Vector3Int GetMapSize() => Map.size;
-	public List<Tile> GetTileAssets() => _loader.TileAssets;
+	public Dictionary<string,Tile> GetTileAssets() => _loader.TileAssets;
 }
