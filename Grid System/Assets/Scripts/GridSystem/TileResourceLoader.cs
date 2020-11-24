@@ -4,19 +4,19 @@ using UnityEngine.Tilemaps;
 
 public class TileResourceLoader
 {
-	private string _path;
+	public string Path { get; private set; }
 
 	public Dictionary<string,Tile> TileAssets { get; private set; }
 
 	public TileResourceLoader(string path)
 	{
-		_path = path;
+		Path = path;
 		LoadAllTiles();
 	}
 
 	private void LoadAllTiles()
 	{
-		object[] loaded = Resources.LoadAll(_path, typeof(Tile));
+		object[] loaded = Resources.LoadAll(Path, typeof(Tile));
 
 		TileAssets = new Dictionary<string, Tile>();
 		foreach(Object obj in loaded)

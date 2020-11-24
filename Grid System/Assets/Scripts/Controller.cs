@@ -14,11 +14,11 @@ public class Controller : MonoBehaviour
 
 		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX, new Vector3(2,2,2));
         HexagonMap.CreateMapFromJson("hexMap","HexBoard/HexBoard");
-    }
+	}
 
 	private void Start()
 	{
-		StartCoroutine(SetRandomOnTimer(0.005f, RectangleMap, RectangleMap.GetMapSize()));
+		//StartCoroutine(SetRandomOnTimer(0.005f, RectangleMap, RectangleMap.GetMapSize()));
 		StartCoroutine(SetRandomOnTimer(0.005f, HexagonMap, HexagonMap.GetMapSize()));
 	}
 

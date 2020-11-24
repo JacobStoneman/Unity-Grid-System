@@ -28,7 +28,6 @@
 
 ## TODO
 
-- Overwriting
 - Writing to new file
 - Create new grid just from file?
 

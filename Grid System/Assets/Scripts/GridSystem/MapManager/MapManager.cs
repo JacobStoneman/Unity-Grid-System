@@ -90,4 +90,6 @@ public abstract class MapManager
 		_mapBuilder.SetSwizzle(swizzle);
 	}
 	public void SetAnchor(Vector3 anchor) => _mapBuilder.SetAnchor(anchor);
+
+	public void SaveMap(string path) => _mapBuilder.WriteMapData(path);
 }

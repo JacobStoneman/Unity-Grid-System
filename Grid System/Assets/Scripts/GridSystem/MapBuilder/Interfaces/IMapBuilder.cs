@@ -19,4 +19,5 @@ public interface IMapBuilder
 	void SetScale(Vector3 scale);
 	void SetSwizzle(CellSwizzle swizzle);
 	void SetAnchor(Vector3 anchor);
+	void WriteMapData(string path);
 }

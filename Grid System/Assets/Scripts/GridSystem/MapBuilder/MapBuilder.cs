@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEngine.GridLayout;
 using System.Linq;
+using System.IO;
 
 public abstract class MapBuilder : IMapBuilder
 {
@@ -49,9 +50,23 @@ public abstract class MapBuilder : IMapBuilder
 		_loader = new TileResourceLoader(loadedData.Path);
 		return loadedData;
 	}
-	protected void WriteMapData(string path)
+	public void WriteMapData(string path)
 	{
+		CompressMap();
+		MapData newData = new MapData();
+		newData.Path = _loader.Path;
+		newData.xLength = GetMapSize().x;
 
+		TileBase[] tiles = Map.GetTilesBlock(Map.cellBounds);
+		List<string> tileNames = new List<string>();
+		foreach(TileBase tile in tiles)
+		{
+			tileNames.Add(tile.name);
+		}
+		newData.Data = tileNames.ToArray();
+
+		string saveData = JsonUtility.ToJson(newData);
+		File.WriteAllText($"Assets/Resources/{path}.json", saveData);
 	}
 	
 
