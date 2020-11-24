@@ -7,11 +7,9 @@ public class Controller : MonoBehaviour
     RectangleMapManager RectangleMap;
     HexagonMapManager HexagonMap;
 
-    
-
     void Awake()
     {
-		RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.XYZ,new Vector3(1,2,1));
+		RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.XYZ, new Vector3(1, 1, 1));
 		RectangleMap.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
 
 		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX, new Vector3(2,2,2));
@@ -35,6 +33,6 @@ public class Controller : MonoBehaviour
 
 	private void Update()
 	{
-        
+		
 	}
 }

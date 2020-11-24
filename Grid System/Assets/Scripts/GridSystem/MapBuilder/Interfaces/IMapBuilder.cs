@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEngine.GridLayout;
 
 public interface IMapBuilder
 {
@@ -15,4 +16,7 @@ public interface IMapBuilder
 	void SetRandomTileAtPos(Vector3Int gridPos);
 	TileBase GetTile(Vector3Int gridPos);
 	TileBase GetTile(Vector3Int gridPos, out string asset);
+	void SetScale(Vector3 scale);
+	void SetSwizzle(CellSwizzle swizzle);
+	void SetAnchor(Vector3 anchor);
 }

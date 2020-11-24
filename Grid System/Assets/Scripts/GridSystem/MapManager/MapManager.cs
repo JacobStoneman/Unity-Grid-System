@@ -7,11 +7,8 @@ using static UnityEngine.GridLayout;
 public abstract class MapManager
 {
 	protected Grid _baseGrid;
-	
 	protected IMapBuilder _mapBuilder;
 
-	public List<Tile> TileTypes { get;set; }
-	public List<MapTile> AllTiles { get; private set; }
 
 	public MapManager(CellLayout layout)
 	{
@@ -29,7 +26,12 @@ public abstract class MapManager
 		CellSize = cellSize;
 	}
 
-	//TODO: To properly implement this, setOrientation needs to be replaced with a customOrientation method
+	//TODO: I dont think these need to exist
+	public List<Tile> TileTypes { get;set; }
+	public List<MapTile> AllTiles { get; private set; }
+
+	//TODO: CellGap needs to be implemented
+
 	public Vector3 CellSize
 	{
 		get { return CellSize; }
@@ -47,6 +49,7 @@ public abstract class MapManager
 		private set { _baseGrid.cellSwizzle = value; }
 	}
 
+
 	//TODO: This will not work with different cell swizzles
 	public Vector3Int GetGridPosFromMousePos()
 	{
@@ -55,12 +58,36 @@ public abstract class MapManager
 	}
 	public Vector3Int GetGridPosFromLocalCoords(Vector3 coords) => _baseGrid.LocalToCell(coords);
 	public Vector3Int GetGridPosFromWorldCoords(Vector3 coords) => _baseGrid.WorldToCell(coords);
+
+
 	public Dictionary<string,Tile> GetTileAssets() => _mapBuilder.GetTileAssets();
-	public void CreateTestMap(string path) => _mapBuilder.CreateTestMap(path,_baseGrid);
-	public void CreateMapFromJson(string mapName, string path) => _mapBuilder.CreateMapFromJson(mapName, path, _baseGrid);
-	public Vector3Int GetMapSize() => _mapBuilder.GetMapSize();
 	public TileBase GetTile(Vector3Int gridPos) => _mapBuilder.GetTile(gridPos);
 	public TileBase GetTile(Vector3Int gridPos, out string asset) => _mapBuilder.GetTile(gridPos, out asset);
+
+
 	public void SetTileAtPos(Vector3Int gridPos, string asset) => _mapBuilder.SetTileAtPos(gridPos, asset);
 	public void SetRandomTileAtPos(Vector3Int gridPos) => _mapBuilder.SetRandomTileAtPos(gridPos);
+
+
+	public void CreateTestMap(string path) => _mapBuilder.CreateTestMap(path,_baseGrid);
+	public void CreateMapFromJson(string mapName, string path) => _mapBuilder.CreateMapFromJson(mapName, path, _baseGrid);
+
+
+	public Vector3Int GetMapSize() => _mapBuilder.GetMapSize();
+
+	/// <summary>
+	/// These ensure the tiles scale and rotate properly to match the grid
+	/// </summary>
+	/// <param name="scale"></param>
+	public void ScaleMap(Vector3 scale)
+	{
+		CellSize = scale;
+		_mapBuilder.SetScale(scale);
+	}
+	public void SwizzleMap(CellSwizzle swizzle)
+	{
+		Swizzle = swizzle;
+		_mapBuilder.SetSwizzle(swizzle);
+	}
+	public void SetAnchor(Vector3 anchor) => _mapBuilder.SetAnchor(anchor);
 }

@@ -18,28 +18,30 @@ public class MapTransformControl
 
 	public Matrix4x4 GetOrientation()
 	{
+		Quaternion rot = new Quaternion();
 		switch (Swizzle)
 		{
 			case CellSwizzle.XYZ:
-				return Matrix4x4.TRS(Position, Quaternion.Euler(0,0,0), CellSize);
+				rot = Quaternion.Euler(0, 0, 0);
+				break;
 			case CellSwizzle.XZY:
-				//Map.orientation = Tilemap.Orientation.XZ;
-				return new Matrix4x4();
+				rot = Quaternion.Euler(90, 180, 0);
+				break;
 			case CellSwizzle.YXZ:
-				//Map.orientation = Tilemap.Orientation.YX;
-				return new Matrix4x4();
+				rot = Quaternion.Euler(0, 0, 90);
+				break;
 			case CellSwizzle.YZX:
-				return Matrix4x4.TRS(Position, Quaternion.Euler(90, 270, 0), CellSize);
-				//Map.orientationMatrix = mat;
-				return new Matrix4x4();
+				rot = Quaternion.Euler(90, 270, 0);
+				break;
 			case CellSwizzle.ZXY:
-				//Map.orientation = Tilemap.Orientation.ZY;
-				return new Matrix4x4();
+				rot = Quaternion.Euler(0, 90, 90);
+				break;
 			case CellSwizzle.ZYX:
-				//Map.orientation = Tilemap.Orientation.ZY;
-				return new Matrix4x4();
+				rot = Quaternion.Euler(0, 270, 0);
+				break;
 			default:
 				return new Matrix4x4();
 		}
+		return Matrix4x4.TRS(Position, rot, CellSize);
 	}
 }

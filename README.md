@@ -28,14 +28,9 @@
 
 ## TODO
 
-- Custom orientations
-- Dynamic scaling
-- Transform methods for map
-- Transform methods for individual Tiles
-- A separate public MapTransform class within the map builder that can be called by the map manager
-- Configurable tile anchors
 - Overwriting
 - Writing to new file
+- Create new grid just from file?
 
 ## Notes
 

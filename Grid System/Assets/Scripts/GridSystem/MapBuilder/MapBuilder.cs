@@ -8,21 +8,22 @@ using System.Linq;
 public abstract class MapBuilder : IMapBuilder
 {
 	protected TileResourceLoader _loader;
-	public Tilemap Map { get; private set; }
-
-	public MapTransformControl MapTransform;
+	private Tilemap Map;
+	private MapTransformControl MapTransform;
 
 	System.Random rand = new System.Random();
 
-	//TODO: Needs some way of setting up anchor
 	public MapBuilder(Vector3 cellSize,CellSwizzle swizzle)
 	{
 		MapTransform = new MapTransformControl(cellSize, swizzle);
-		Anchor = new Vector3(0.5f, 0.5f);
 	}
 
-	public Vector3 Anchor { get; set; }
+	//TODO: This needs to be dynamic
+	public Vector3 Anchor { get; protected set; } = new Vector3(0.5f, 0.5f, 0);
 
+	/// <summary>
+	/// Sets the orientation of the tilemap tp match whatever values are stored in the MapTransform object
+	/// </summary>
 	private void SetOrientation()
 	{
 		Map.orientation = Tilemap.Orientation.Custom;
@@ -48,6 +49,11 @@ public abstract class MapBuilder : IMapBuilder
 		_loader = new TileResourceLoader(loadedData.Path);
 		return loadedData;
 	}
+	protected void WriteMapData(string path)
+	{
+
+	}
+	
 
 	protected void CreateEmptyMap(string mapName, Grid parent)
 	{
@@ -57,7 +63,6 @@ public abstract class MapBuilder : IMapBuilder
 		Map.gameObject.AddComponent<TilemapRenderer>();
 		Map.gameObject.transform.SetParent(parent.gameObject.transform);
 	}
-
 	/// <summary>
 	/// Generates one of each tile read in from the given path
 	/// </summary>
@@ -75,7 +80,6 @@ public abstract class MapBuilder : IMapBuilder
 			index++;
 		}
 	}
-
 	public virtual void CreateMapFromJson(string mapName, string path, Grid parent)
 	{
 		MapData data = ReadMapData(path);
@@ -95,7 +99,11 @@ public abstract class MapBuilder : IMapBuilder
 		}
 	}
 
+
 	public Vector3Int GetMapSize() => Map.size;
+
+
+	public Dictionary<string,Tile> GetTileAssets() => _loader.TileAssets;
 	//TODO: This may need to be a Tile return type
 	public TileBase GetTile(Vector3Int gridPos) => Map.GetTile(gridPos);
 	public TileBase GetTile(Vector3Int gridPos, out string asset)
@@ -104,7 +112,25 @@ public abstract class MapBuilder : IMapBuilder
 		asset = result.name;
 		return result;
 	}
-	public Dictionary<string,Tile> GetTileAssets() => _loader.TileAssets;
+
+
 	public void SetTileAtPos(Vector3Int gridPos, string asset) => Map.SetTile(gridPos, _loader.TileAssets[asset]);
 	public void SetRandomTileAtPos(Vector3Int gridPos) => Map.SetTile(gridPos, _loader.TileAssets.ElementAt(rand.Next(0, _loader.TileAssets.Count)).Value);
+	
+	
+	public void SetScale(Vector3 scale)
+	{
+		MapTransform.CellSize = scale;
+		SetOrientation();
+	}
+	public void SetSwizzle(CellSwizzle swizzle)
+	{
+		MapTransform.Swizzle = swizzle;
+		SetOrientation();
+	}
+	public void SetAnchor(Vector3 anchor)
+	{
+		Anchor = anchor;
+		Map.tileAnchor = anchor;
+	}
 }
