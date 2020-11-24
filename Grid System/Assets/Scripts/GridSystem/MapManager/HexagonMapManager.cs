@@ -9,13 +9,13 @@ public class HexagonMapManager : MapManager
 
 	public HexagonMapManager() : base(CellLayout.Hexagon)
 	{
-		_mapBuilder = new HexagonMapBuilder(CellSwizzle.XYZ);
+		_mapBuilder = new HexagonMapBuilder(new Vector3(1,1,1), CellSwizzle.XYZ);
 		base._mapBuilder = _mapBuilder;
 	}
 
-	public HexagonMapManager(CellSwizzle swizzle) : base(CellLayout.Hexagon,swizzle)
+	public HexagonMapManager(CellSwizzle swizzle, Vector3 cellSize) : base(CellLayout.Hexagon,swizzle, cellSize)
 	{
-		_mapBuilder = new HexagonMapBuilder(swizzle);
+		_mapBuilder = new HexagonMapBuilder(cellSize, swizzle);
 		base._mapBuilder = _mapBuilder;
 	}
 }

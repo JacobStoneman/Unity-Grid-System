@@ -13,4 +13,6 @@ public interface IMapBuilder
 	Vector3Int GetMapSize();
 	void SetTileAtPos(Vector3Int gridPos, string asset);
 	void SetRandomTileAtPos(Vector3Int gridPos);
+	TileBase GetTile(Vector3Int gridPos);
+	TileBase GetTile(Vector3Int gridPos, out string asset);
 }

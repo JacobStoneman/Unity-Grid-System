@@ -9,13 +9,15 @@ public abstract class MapBuilder : IMapBuilder
 {
 	protected TileResourceLoader _loader;
 	public Tilemap Map { get; private set; }
-	private CellSwizzle _swizzle;
+
+	public MapTransformControl MapTransform;
+
 	System.Random rand = new System.Random();
 
 	//TODO: Needs some way of setting up anchor
-	public MapBuilder(CellSwizzle swizzle)
+	public MapBuilder(Vector3 cellSize,CellSwizzle swizzle)
 	{
-		_swizzle = swizzle;
+		MapTransform = new MapTransformControl(cellSize, swizzle);
 		Anchor = new Vector3(0.5f, 0.5f);
 	}
 
@@ -23,27 +25,8 @@ public abstract class MapBuilder : IMapBuilder
 
 	private void SetOrientation()
 	{
-		switch (_swizzle)
-		{
-			case CellSwizzle.XYZ:
-				Map.orientation = Tilemap.Orientation.XY;
-				break;
-			case CellSwizzle.XZY:
-				Map.orientation = Tilemap.Orientation.XZ;
-				break;
-			case CellSwizzle.YXZ:
-				Map.orientation = Tilemap.Orientation.YX;
-				break;
-			case CellSwizzle.YZX:
-				Map.orientation = Tilemap.Orientation.ZX;
-				break;
-			case CellSwizzle.ZXY:
-				Map.orientation = Tilemap.Orientation.ZY;
-				break;
-			case CellSwizzle.ZYX:
-				Map.orientation = Tilemap.Orientation.ZY;
-				break;
-		}
+		Map.orientation = Tilemap.Orientation.Custom;
+		Map.orientationMatrix = MapTransform.GetOrientation();
 	}
 
 	private void CompressMap()
@@ -93,10 +76,35 @@ public abstract class MapBuilder : IMapBuilder
 		}
 	}
 
-	public abstract void CreateMapFromJson(string mapName, string path, Grid parent);
-	public Vector3Int GetMapSize() => Map.size;
-	public Dictionary<string,Tile> GetTileAssets() => _loader.TileAssets;
+	public virtual void CreateMapFromJson(string mapName, string path, Grid parent)
+	{
+		MapData data = ReadMapData(path);
+		CreateEmptyMap(mapName, parent);
 
+		int yIndex = 0;
+		for (int i = 0; i < data.Data.Length; i++)
+		{
+			if (i != 0 && i % data.xLength == 0)
+			{
+				yIndex++;
+			}
+			if (_loader.TileAssets.ContainsKey(data.Data[i]))
+			{
+				Map.SetTile(new Vector3Int(i - (yIndex * data.xLength), yIndex, 0), _loader.TileAssets[data.Data[i]]);
+			}
+		}
+	}
+
+	public Vector3Int GetMapSize() => Map.size;
+	//TODO: This may need to be a Tile return type
+	public TileBase GetTile(Vector3Int gridPos) => Map.GetTile(gridPos);
+	public TileBase GetTile(Vector3Int gridPos, out string asset)
+	{
+		TileBase result = Map.GetTile(gridPos);
+		asset = result.name;
+		return result;
+	}
+	public Dictionary<string,Tile> GetTileAssets() => _loader.TileAssets;
 	public void SetTileAtPos(Vector3Int gridPos, string asset) => Map.SetTile(gridPos, _loader.TileAssets[asset]);
 	public void SetRandomTileAtPos(Vector3Int gridPos) => Map.SetTile(gridPos, _loader.TileAssets.ElementAt(rand.Next(0, _loader.TileAssets.Count)).Value);
 }

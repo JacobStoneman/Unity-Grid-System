@@ -28,12 +28,20 @@
 
 ## TODO
 
-- -
+- Custom orientations
+- Dynamic scaling
+- Transform methods for map
+- Transform methods for individual Tiles
+- A separate public MapTransform class within the map builder that can be called by the map manager
+- Configurable tile anchors
+- Overwriting
+- Writing to new file
 
 ## Notes
 
 - All GameObjects that exist on the map should implement an IMove interface which controls their movement between grid cells
 - CompressMap should be a private method called only when custom map building is involved
+- Look at using default parameters in the constructors
 
 ## Links
 [Tilemaps through code](https://medium.com/@pudding_entertainment/unity-how-to-create-2d-tilemap-programmatically-afb1f94ffce5)

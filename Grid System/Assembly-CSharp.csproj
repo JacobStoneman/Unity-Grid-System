@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\GridSystem\MapManager\MapManager.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapManager\RectangleMapManager.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapTile.cs" />
+    <Compile Include="Assets\Scripts\GridSystem\MapTransformControl.cs" />
     <Compile Include="Assets\Scripts\GridSystem\TileResourceLoader.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Jacob/Documents/Files/Unity/Projects/Grid System/Grid System/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

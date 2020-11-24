@@ -11,10 +11,10 @@ public class Controller : MonoBehaviour
 
     void Awake()
     {
-		RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.XYZ);
+		RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.XYZ,new Vector3(1,2,1));
 		RectangleMap.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
 
-		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX);
+		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX, new Vector3(2,2,2));
         HexagonMap.CreateMapFromJson("hexMap","HexBoard/HexBoard");
     }
 
