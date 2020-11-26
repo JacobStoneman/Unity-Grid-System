@@ -12,6 +12,7 @@ public class MapTransformControl
 	}
 	public Vector3 CellSize { get; set; }
 	public CellSwizzle Swizzle { get; set; }
+	public Vector3Int Origin { get; set; } = new Vector3Int(0, 0, 0);
 
 	//TODO: This needs to be implemented
 	public Vector3 Position { get; set; } = new Vector3(0, 0, 0);

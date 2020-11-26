@@ -30,6 +30,7 @@
 
 - Writing to new file
 - Create new grid just from file?
+- Look at WriteAll path
 
 ## Notes
 

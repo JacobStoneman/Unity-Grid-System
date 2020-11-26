@@ -196,7 +196,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 112
+  controlID: 59
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   - {fileID: 19}
   - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -971,9 +971,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f6350000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6efbffff
+      m_ExpandedIDs: 02deffff02e3ffff6efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1033,9 +1033,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.7731384, y: 5.1444535, z: -1.5006771}
+    m_Target: {x: -7.487847, y: 2.4842463, z: 2.52458}
     speed: 2
-    m_Value: {x: -0.77313834, y: 5.1444535, z: -1.500677}
+    m_Value: {x: -7.487847, y: 2.4842463, z: 2.52458}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1081,13 +1081,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.19299176, y: 0.37585577, z: -0.08034765, w: 0.90279543}
+    m_Target: {x: 0.0650562, y: -0.0014970922, z: 0.000098026765, w: 0.9978856}
     speed: 2
-    m_Value: {x: 0.19569843, y: 0.37561142, z: -0.08147452, w: 0.9022085}
+    m_Value: {x: 0.06505586, y: -0.0014970845, z: 0.00009802626, w: 0.99788046}
   m_Size:
-    m_Target: 8.624046
+    m_Target: 29.543705
     speed: 2
-    m_Value: 8.624046
+    m_Value: 29.543705
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1177,11 +1177,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/CheckerBoard
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/CheckerBoard
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Jacob\Documents\Files\Unity\Projects\Grid System\Grid
     System
@@ -1189,8 +1189,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 42340000
-    m_LastClickedID: 13378
+    m_SelectedIDs: 30340000
+    m_LastClickedID: 13360
     m_ExpandedIDs: 0000000030340000323400003434000036340000383400003a3400003c34000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1298,6 +1298,6 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 282
+    width: 352
     height: 448
   m_ViewDataDictionary: {fileID: 0}

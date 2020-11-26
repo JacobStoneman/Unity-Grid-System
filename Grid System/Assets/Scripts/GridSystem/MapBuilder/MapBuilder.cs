@@ -33,7 +33,7 @@ public abstract class MapBuilder : IMapBuilder
 
 	private void CompressMap()
 	{
-		Map.origin = new Vector3Int(0, 0, 0);
+		Map.origin = MapTransform.Origin;
 		Map.CompressBounds();
 	}
 
@@ -54,6 +54,9 @@ public abstract class MapBuilder : IMapBuilder
 	{
 		CompressMap();
 		MapData newData = new MapData();
+		newData.OriginX = MapTransform.Origin.x;
+		newData.OriginY = MapTransform.Origin.y;
+		newData.OriginZ = MapTransform.Origin.z;
 		newData.Path = _loader.Path;
 		newData.xLength = GetMapSize().x;
 
@@ -61,7 +64,14 @@ public abstract class MapBuilder : IMapBuilder
 		List<string> tileNames = new List<string>();
 		foreach(TileBase tile in tiles)
 		{
-			tileNames.Add(tile.name);
+			if (tile == null)
+			{
+				tileNames.Add("-");
+			}
+			else
+			{
+				tileNames.Add(tile.name);
+			}
 		}
 		newData.Data = tileNames.ToArray();
 
@@ -100,6 +110,9 @@ public abstract class MapBuilder : IMapBuilder
 		MapData data = ReadMapData(path);
 		CreateEmptyMap(mapName, parent);
 
+		MapTransform.Origin = new Vector3Int(data.OriginX, data.OriginY, data.OriginZ);
+		Map.origin = MapTransform.Origin;
+
 		int yIndex = 0;
 		for (int i = 0; i < data.Data.Length; i++)
 		{
@@ -109,7 +122,7 @@ public abstract class MapBuilder : IMapBuilder
 			}
 			if (_loader.TileAssets.ContainsKey(data.Data[i]))
 			{
-				Map.SetTile(new Vector3Int(i - (yIndex * data.xLength), yIndex, 0), _loader.TileAssets[data.Data[i]]);
+				Map.SetTile(new Vector3Int(Map.origin.x + (i - (yIndex * data.xLength)), Map.origin.y + yIndex, Map.origin.z + 0), _loader.TileAssets[data.Data[i]]);
 			}
 		}
 	}
@@ -129,7 +142,20 @@ public abstract class MapBuilder : IMapBuilder
 	}
 
 
-	public void SetTileAtPos(Vector3Int gridPos, string asset) => Map.SetTile(gridPos, _loader.TileAssets[asset]);
+	public void SetTileAtPos(Vector3Int gridPos, string asset)
+	{
+		if (asset == null)
+		{
+			Map.SetTile(gridPos, null);
+		}
+		else
+		{
+			if(gridPos.x < MapTransform.Origin.x) MapTransform.Origin = new Vector3Int(gridPos.x, MapTransform.Origin.y, MapTransform.Origin.z);
+			if(gridPos.y < MapTransform.Origin.y) MapTransform.Origin = new Vector3Int(MapTransform.Origin.x, gridPos.y, MapTransform.Origin.z);
+			if(gridPos.z < MapTransform.Origin.z) MapTransform.Origin = new Vector3Int(MapTransform.Origin.z, MapTransform.Origin.y, gridPos.z);
+			Map.SetTile(gridPos, _loader.TileAssets[asset]);
+		}
+	}
 	public void SetRandomTileAtPos(Vector3Int gridPos) => Map.SetTile(gridPos, _loader.TileAssets.ElementAt(rand.Next(0, _loader.TileAssets.Count)).Value);
 	
 	
