@@ -54,7 +54,7 @@ public abstract class MapBuilder : IMapBuilder
 		newData.Path = _loader.Path;
 		newData.xLength = GetMapSize().x;
 
-		TileBase[] tiles = Map.GetTilesBlock(Map.cellBounds);
+		TileBase[] tiles = GetAllTiles();
 		List<string> tileNames = new List<string>();
 		foreach(TileBase tile in tiles)
 		{
@@ -123,8 +123,6 @@ public abstract class MapBuilder : IMapBuilder
 
 
 	public Vector3Int GetMapSize() => Map.size;
-
-
 	public Dictionary<string,Tile> GetTileAssets() => _loader.TileAssets;
 	//TODO: This may need to be a Tile return type
 	public TileBase GetTile(Vector3Int gridPos) => Map.GetTile(gridPos);
@@ -134,6 +132,7 @@ public abstract class MapBuilder : IMapBuilder
 		asset = result.name;
 		return result;
 	}
+	public TileBase[] GetAllTiles() => Map.GetTilesBlock(Map.cellBounds);
 
 
 	public void SetTileAtPos(Vector3Int gridPos, string asset)
@@ -144,9 +143,6 @@ public abstract class MapBuilder : IMapBuilder
 		}
 		else
 		{
-			if(gridPos.x < MapTransform.Origin.x) MapTransform.Origin = new Vector3Int(gridPos.x, MapTransform.Origin.y, MapTransform.Origin.z);
-			if(gridPos.y < MapTransform.Origin.y) MapTransform.Origin = new Vector3Int(MapTransform.Origin.x, gridPos.y, MapTransform.Origin.z);
-			if(gridPos.z < MapTransform.Origin.z) MapTransform.Origin = new Vector3Int(MapTransform.Origin.z, MapTransform.Origin.y, gridPos.z);
 			Map.SetTile(gridPos, _loader.TileAssets[asset]);
 		}
 	}
@@ -169,6 +165,4 @@ public abstract class MapBuilder : IMapBuilder
 		Map.tileAnchor = anchor;
 	}
 
-
-	
 }

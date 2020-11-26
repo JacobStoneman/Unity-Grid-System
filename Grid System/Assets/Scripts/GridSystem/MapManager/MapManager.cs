@@ -26,10 +26,6 @@ public abstract class MapManager
 		CellSize = cellSize;
 	}
 
-	//TODO: I dont think these need to exist
-	public List<Tile> TileTypes { get;set; }
-	public List<MapTile> AllTiles { get; private set; }
-
 	//TODO: CellGap needs to be implemented
 
 	public Vector3 CellSize
@@ -43,10 +39,15 @@ public abstract class MapManager
 		get { return Layout; }
 		private set { _baseGrid.cellLayout = value; }
 	}
+	private CellSwizzle _swizzle;
 	public CellSwizzle Swizzle
 	{
-		get { return Swizzle; }
-		private set { _baseGrid.cellSwizzle = value; }
+		get { return _swizzle; }
+		private set 
+		{
+			_swizzle = value;
+			_baseGrid.cellSwizzle = value; 
+		}
 	}
 
 
@@ -54,7 +55,14 @@ public abstract class MapManager
 	public Vector3Int GetGridPosFromMousePos()
 	{
 		Vector3Int gridCoord =_baseGrid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-		return new Vector3Int(gridCoord.x, gridCoord.y, 0);
+
+		switch (Swizzle)
+		{
+			case CellSwizzle.XYZ:
+					return new Vector3Int(gridCoord.x, gridCoord.y, 0);
+		}
+
+		return new Vector3Int(0,0,0);
 	}
 	public Vector3Int GetGridPosFromLocalCoords(Vector3 coords) => _baseGrid.LocalToCell(coords);
 	public Vector3Int GetGridPosFromWorldCoords(Vector3 coords) => _baseGrid.WorldToCell(coords);
@@ -63,6 +71,8 @@ public abstract class MapManager
 	public Dictionary<string,Tile> GetTileAssets() => _mapBuilder.GetTileAssets();
 	public TileBase GetTile(Vector3Int gridPos) => _mapBuilder.GetTile(gridPos);
 	public TileBase GetTile(Vector3Int gridPos, out string asset) => _mapBuilder.GetTile(gridPos, out asset);
+	public TileBase[] GetAllTiles() => _mapBuilder.GetAllTiles();
+	public Vector3Int GetMapSize() => _mapBuilder.GetMapSize();
 
 
 	public void SetTileAtPos(Vector3Int gridPos, string asset) => _mapBuilder.SetTileAtPos(gridPos, asset);
@@ -72,8 +82,6 @@ public abstract class MapManager
 	public void CreateTestMap(string path) => _mapBuilder.CreateTestMap(path,_baseGrid);
 	public void CreateMapFromJson(string mapName, string path) => _mapBuilder.CreateMapFromJson(mapName, path, _baseGrid);
 
-
-	public Vector3Int GetMapSize() => _mapBuilder.GetMapSize();
 
 	/// <summary>
 	/// These ensure the tiles scale and rotate properly to match the grid

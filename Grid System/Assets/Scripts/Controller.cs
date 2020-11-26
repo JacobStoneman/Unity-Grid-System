@@ -13,11 +13,7 @@ public class Controller : MonoBehaviour
 		RectangleMap.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
 
 		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX, new Vector3(2,2,2));
-        HexagonMap.CreateMapFromJson("hexMap","HexBoard/HexBoard");
-
-		//RectangleMap.SetTileAtPos(new Vector3Int(-20, 0, 0), null);
-		RectangleMap.SetTileAtPos(new Vector3Int(-10, 0, 0), null);
-		RectangleMap.SaveMap("CheckerBoard/CheckerBoard");
+		HexagonMap.CreateMapFromJson("hexMap", "HexBoard/HexBoard");
 	}
 
 	private void Start()
@@ -37,6 +33,6 @@ public class Controller : MonoBehaviour
 
 	private void Update()
 	{
-		
+		print(RectangleMap.GetGridPosFromMousePos());
 	}
 }

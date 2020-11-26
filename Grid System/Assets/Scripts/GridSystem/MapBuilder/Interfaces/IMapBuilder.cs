@@ -16,6 +16,7 @@ public interface IMapBuilder
 	void SetRandomTileAtPos(Vector3Int gridPos);
 	TileBase GetTile(Vector3Int gridPos);
 	TileBase GetTile(Vector3Int gridPos, out string asset);
+	TileBase[] GetAllTiles();
 	void SetScale(Vector3 scale);
 	void SetSwizzle(CellSwizzle swizzle);
 	void SetAnchor(Vector3 anchor);
