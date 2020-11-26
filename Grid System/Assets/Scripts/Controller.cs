@@ -16,8 +16,8 @@ public class Controller : MonoBehaviour
         HexagonMap.CreateMapFromJson("hexMap","HexBoard/HexBoard");
 
 		//RectangleMap.SetTileAtPos(new Vector3Int(-20, 0, 0), null);
-		//RectangleMap.SetTileAtPos(new Vector3Int(-10, 0, 0), null);
-		//RectangleMap.SaveMap("CheckerBoard/CheckerBoard");
+		RectangleMap.SetTileAtPos(new Vector3Int(-10, 0, 0), null);
+		RectangleMap.SaveMap("CheckerBoard/CheckerBoard");
 	}
 
 	private void Start()

@@ -28,13 +28,7 @@ public abstract class MapBuilder : IMapBuilder
 	private void SetOrientation()
 	{
 		Map.orientation = Tilemap.Orientation.Custom;
-		Map.orientationMatrix = MapTransform.GetOrientation();
-	}
-
-	private void CompressMap()
-	{
-		Map.origin = MapTransform.Origin;
-		Map.CompressBounds();
+		Map.orientationMatrix = MapTransform.SetOrientation();
 	}
 
 	/// <summary>
@@ -52,7 +46,7 @@ public abstract class MapBuilder : IMapBuilder
 	}
 	public void WriteMapData(string path)
 	{
-		CompressMap();
+		MapTransform.SetOrigin(Map);
 		MapData newData = new MapData();
 		newData.OriginX = MapTransform.Origin.x;
 		newData.OriginY = MapTransform.Origin.y;
@@ -174,4 +168,7 @@ public abstract class MapBuilder : IMapBuilder
 		Anchor = anchor;
 		Map.tileAnchor = anchor;
 	}
+
+
+	
 }

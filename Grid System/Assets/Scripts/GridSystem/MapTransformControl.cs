@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using static UnityEngine.GridLayout;
 
 public class MapTransformControl
@@ -17,7 +18,7 @@ public class MapTransformControl
 	//TODO: This needs to be implemented
 	public Vector3 Position { get; set; } = new Vector3(0, 0, 0);
 
-	public Matrix4x4 GetOrientation()
+	public Matrix4x4 SetOrientation()
 	{
 		Quaternion rot = new Quaternion();
 		switch (Swizzle)
@@ -44,5 +45,11 @@ public class MapTransformControl
 				return new Matrix4x4();
 		}
 		return Matrix4x4.TRS(Position, rot, CellSize);
+	}
+
+	public void SetOrigin(Tilemap map)
+	{
+		map.CompressBounds();
+		Origin = new Vector3Int(map.cellBounds.min.x, map.cellBounds.min.y, map.cellBounds.min.z);
 	}
 }
