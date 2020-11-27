@@ -12,7 +12,7 @@ public class RectangleMapManager : MapManager
 		base._mapBuilder = _mapBuilder;
 	}
 
-	public RectangleMapManager(CellSwizzle swizzle, Vector3 cellSize) : base(CellLayout.Rectangle,swizzle,cellSize)
+	public RectangleMapManager(CellSwizzle swizzle, Vector3Int cellSize) : base(CellLayout.Rectangle,swizzle,cellSize)
 	{
 		_mapBuilder = new RectangleMapBuilder(cellSize, swizzle);
 		base._mapBuilder = _mapBuilder;

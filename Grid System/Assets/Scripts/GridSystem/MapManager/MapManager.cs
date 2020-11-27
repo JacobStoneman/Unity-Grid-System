@@ -15,10 +15,10 @@ public abstract class MapManager
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
 		Layout = layout;
 		Swizzle = CellSwizzle.XYZ;
-		CellSize = new Vector3(1, 1, 1);
+		CellSize = new Vector3Int(1, 1, 1);
 	}
 
-	public MapManager(CellLayout layout, CellSwizzle swizzle, Vector3 cellSize)
+	public MapManager(CellLayout layout, CellSwizzle swizzle, Vector3Int cellSize)
 	{
 		_baseGrid = new GameObject("Grid").AddComponent<Grid>();
 		Layout = layout;
@@ -28,17 +28,28 @@ public abstract class MapManager
 
 	//TODO: CellGap needs to be implemented
 
-	public Vector3 CellSize
+	private Vector3Int _cellSize;
+	public Vector3Int CellSize
 	{
-		get { return CellSize; }
-		private set { _baseGrid.cellSize = value; }
+		get { return _cellSize; }
+		private set 
+		{
+			_cellSize = value;
+			_baseGrid.cellSize = value; 
+		}
 	}
 
+	private CellLayout _layout;
 	public CellLayout Layout
 	{
-		get { return Layout; }
-		private set { _baseGrid.cellLayout = value; }
+		get { return _layout; }
+		private set 
+		{
+			_layout = value;
+			_baseGrid.cellLayout = value; 
+		}
 	}
+
 	private CellSwizzle _swizzle;
 	public CellSwizzle Swizzle
 	{
@@ -50,20 +61,37 @@ public abstract class MapManager
 		}
 	}
 
-
-	//TODO: This will not work with different cell swizzles
-	public Vector3Int GetGridPosFromMousePos()
+	/// <summary>
+	/// Assumes the camera is orthograpic and looking directly at the grid
+	/// </summary>
+	/// <param name="cam"></param>
+	/// <returns></returns>
+	public Vector3Int GridPosFromMouse(Camera cam)
 	{
-		Vector3Int gridCoord =_baseGrid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
-		switch (Swizzle)
+		Vector3Int result = new Vector3Int();
+		if (cam.orthographic)
 		{
-			case CellSwizzle.XYZ:
-					return new Vector3Int(gridCoord.x, gridCoord.y, 0);
+			Vector3Int gridCoord =_baseGrid.WorldToCell(cam.ScreenToWorldPoint(Input.mousePosition));
+			switch (Swizzle)
+			{
+				case CellSwizzle.XYZ:
+					return new Vector3Int(gridCoord.x * CellSize.x, gridCoord.y * CellSize.y, 0);
+				case CellSwizzle.XZY:
+					return new Vector3Int(gridCoord.x * CellSize.x, 0, gridCoord.y * CellSize.y);
+				case CellSwizzle.YXZ:
+					return new Vector3Int(gridCoord.y * CellSize.y, gridCoord.x * CellSize.x, 0);
+				case CellSwizzle.YZX:
+					return new Vector3Int(gridCoord.y * CellSize.y, 0, gridCoord.x * CellSize.x);
+				case CellSwizzle.ZXY:
+					return new Vector3Int(0,gridCoord.x * CellSize.x, gridCoord.y * CellSize.y);
+				case CellSwizzle.ZYX:
+					return new Vector3Int(0, gridCoord.y * CellSize.y, gridCoord.x * CellSize.x);
+			}
 		}
 
-		return new Vector3Int(0,0,0);
+		return result;
 	}
+
 	public Vector3Int GetGridPosFromLocalCoords(Vector3 coords) => _baseGrid.LocalToCell(coords);
 	public Vector3Int GetGridPosFromWorldCoords(Vector3 coords) => _baseGrid.WorldToCell(coords);
 
@@ -87,7 +115,7 @@ public abstract class MapManager
 	/// These ensure the tiles scale and rotate properly to match the grid
 	/// </summary>
 	/// <param name="scale"></param>
-	public void ScaleMap(Vector3 scale)
+	public void ScaleMap(Vector3Int scale)
 	{
 		CellSize = scale;
 		_mapBuilder.SetScale(scale);

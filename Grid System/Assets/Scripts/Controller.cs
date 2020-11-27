@@ -7,19 +7,21 @@ public class Controller : MonoBehaviour
     RectangleMapManager RectangleMap;
     HexagonMapManager HexagonMap;
 
+	public GameObject marker;
+
     void Awake()
     {
-		RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.XYZ, new Vector3(1, 1, 1));
+		RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.ZXY, new Vector3Int(1, 1, 1));
 		RectangleMap.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
 
-		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.YZX, new Vector3(2,2,2));
-		HexagonMap.CreateMapFromJson("hexMap", "HexBoard/HexBoard");
+		//HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.XYZ, new Vector3Int(1, 1, 1));
+		//HexagonMap.CreateMapFromJson("hexMap", "HexBoard/HexBoard");
 	}
 
 	private void Start()
 	{
 		//StartCoroutine(SetRandomOnTimer(0.005f, RectangleMap, RectangleMap.GetMapSize()));
-		StartCoroutine(SetRandomOnTimer(0.005f, HexagonMap, HexagonMap.GetMapSize()));
+		//StartCoroutine(SetRandomOnTimer(0.005f, HexagonMap, HexagonMap.GetMapSize()));
 	}
 
 	IEnumerator SetRandomOnTimer(float duration, MapManager manager, Vector3Int size)
@@ -33,6 +35,7 @@ public class Controller : MonoBehaviour
 
 	private void Update()
 	{
-		print(RectangleMap.GetGridPosFromMousePos());
+
+		marker.transform.position = RectangleMap.GridPosFromMouse(Camera.main);
 	}
 }

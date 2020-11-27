@@ -13,7 +13,7 @@ public class HexagonMapManager : MapManager
 		base._mapBuilder = _mapBuilder;
 	}
 
-	public HexagonMapManager(CellSwizzle swizzle, Vector3 cellSize) : base(CellLayout.Hexagon,swizzle, cellSize)
+	public HexagonMapManager(CellSwizzle swizzle, Vector3Int cellSize) : base(CellLayout.Hexagon,swizzle, cellSize)
 	{
 		_mapBuilder = new HexagonMapBuilder(cellSize, swizzle);
 		base._mapBuilder = _mapBuilder;
