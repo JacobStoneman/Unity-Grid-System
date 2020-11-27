@@ -11,11 +11,11 @@ public class Controller : MonoBehaviour
 
     void Awake()
     {
-		RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.ZXY, new Vector3Int(1, 1, 1));
-		RectangleMap.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
+		//RectangleMap = new RectangleMapManager(GridLayout.CellSwizzle.YXZ, new Vector3Int(1, 1, 1));
+		//RectangleMap.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
 
-		//HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.XYZ, new Vector3Int(1, 1, 1));
-		//HexagonMap.CreateMapFromJson("hexMap", "HexBoard/HexBoard");
+		HexagonMap = new HexagonMapManager(GridLayout.CellSwizzle.XYZ, new Vector3Int(1, 1, 1));
+		HexagonMap.CreateMapFromJson("hexMap", "HexBoard/HexBoard");
 	}
 
 	private void Start()
@@ -35,7 +35,7 @@ public class Controller : MonoBehaviour
 
 	private void Update()
 	{
-
-		marker.transform.position = RectangleMap.GridPosFromMouse(Camera.main);
+		print( HexagonMap.GetTile(HexagonMap.GridPosFromMouse(Camera.main)));
+		marker.transform.position = HexagonMap.GetSelectorPosition(Camera.main);
 	}
 }

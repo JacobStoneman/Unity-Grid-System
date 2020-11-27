@@ -68,6 +68,7 @@ public abstract class MapManager
 	/// <returns></returns>
 	public Vector3Int GridPosFromMouse(Camera cam)
 	{
+		//TODO: This still needs a lot of testing for different swizzles
 		Vector3Int result = new Vector3Int();
 		if (cam.orthographic)
 		{
@@ -79,9 +80,9 @@ public abstract class MapManager
 				case CellSwizzle.XZY:
 					return new Vector3Int(gridCoord.x * CellSize.x, 0, gridCoord.y * CellSize.y);
 				case CellSwizzle.YXZ:
-					return new Vector3Int(gridCoord.y * CellSize.y, gridCoord.x * CellSize.x, 0);
+					return new Vector3Int(gridCoord.x * CellSize.x, gridCoord.y * CellSize.y, 0);
 				case CellSwizzle.YZX:
-					return new Vector3Int(gridCoord.y * CellSize.y, 0, gridCoord.x * CellSize.x);
+					return new Vector3Int(gridCoord.x * CellSize.x, gridCoord.y * CellSize.y,0);
 				case CellSwizzle.ZXY:
 					return new Vector3Int(0,gridCoord.x * CellSize.x, gridCoord.y * CellSize.y);
 				case CellSwizzle.ZYX:
@@ -90,6 +91,11 @@ public abstract class MapManager
 		}
 
 		return result;
+	}
+
+	public Vector3 GetSelectorPosition(Camera cam)
+	{
+		return _baseGrid.CellToWorld(GridPosFromMouse(cam));
 	}
 
 	public Vector3Int GetGridPosFromLocalCoords(Vector3 coords) => _baseGrid.LocalToCell(coords);
