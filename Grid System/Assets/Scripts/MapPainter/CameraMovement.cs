@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     Camera cam;
+    public int camStep = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         CheckScroll();
+        CheckInput();
     }
 
     void CheckScroll()
@@ -32,10 +34,29 @@ public class CameraMovement : MonoBehaviour
 		{
             cam.orthographicSize = 1;
 		}
+    }
 
-		if (Input.GetMouseButton(2))
+    void CheckInput()
+	{
+		if (Input.GetKey(KeyCode.W))
 		{
-            
-		}
+            Vector3 newPos = new Vector3(transform.position.x, transform.position.y + camStep * Time.deltaTime, transform.position.z);
+            transform.position = newPos;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            Vector3 newPos = new Vector3(transform.position.x, transform.position.y - camStep * Time.deltaTime, transform.position.z);
+            transform.position = newPos;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            Vector3 newPos = new Vector3(transform.position.x - camStep * Time.deltaTime, transform.position.y, transform.position.z);
+            transform.position = newPos;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            Vector3 newPos = new Vector3(transform.position.x + camStep * Time.deltaTime, transform.position.y, transform.position.z);
+            transform.position = newPos;
+        }
     }
 }
