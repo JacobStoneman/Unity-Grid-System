@@ -8,6 +8,7 @@ using static UnityEngine.GridLayout;
 
 public interface IMapBuilder
 {
+	Dictionary<string, Tile> CreateNewMap(string assets, string mapName, Grid parent);
 	void CreateTestMap(string path, Grid parent);
 	void CreateMapFromJson(string mapName, string path, Grid parent);
 	Dictionary<string,Tile> GetTileAssets();

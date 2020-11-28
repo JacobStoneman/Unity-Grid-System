@@ -1,5 +1,9 @@
 # Unity Grid System
+## What Is It?
+Dynamic Maps is an easy to use tool I created which builds on Unity's existing Tilemap implementation allowing for much easier, dynamic control through code. Using this tool Tilemaps can be easily saved, loaded, and modified during run time.
+
 ## Walkthrough
+
 ### Loading prebuilt grid
 - json file should exist in Resource folder
 ```json

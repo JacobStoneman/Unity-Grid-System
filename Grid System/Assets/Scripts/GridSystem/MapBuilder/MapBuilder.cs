@@ -73,6 +73,8 @@ public abstract class MapBuilder : IMapBuilder
 		File.WriteAllText($"Assets/Resources/{path}.json", saveData);
 	}
 	
+	protected void LoadTileSet(string path) => _loader = new TileResourceLoader(path);
+
 
 	protected void CreateEmptyMap(string mapName, Grid parent)
 	{
@@ -81,6 +83,12 @@ public abstract class MapBuilder : IMapBuilder
 		Map.tileAnchor = Anchor;
 		Map.gameObject.AddComponent<TilemapRenderer>();
 		Map.gameObject.transform.SetParent(parent.gameObject.transform);
+	}
+	public Dictionary<string, Tile> CreateNewMap(string assets, string mapName, Grid parent)
+	{
+		LoadTileSet(assets);
+		CreateEmptyMap(mapName,parent);
+		return GetTileAssets();
 	}
 	/// <summary>
 	/// Generates one of each tile read in from the given path

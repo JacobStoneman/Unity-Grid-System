@@ -112,7 +112,7 @@ public abstract class MapManager
 	public void SetTileAtPos(Vector3Int gridPos, string asset) => _mapBuilder.SetTileAtPos(gridPos, asset);
 	public void SetRandomTileAtPos(Vector3Int gridPos) => _mapBuilder.SetRandomTileAtPos(gridPos);
 
-
+	public void CreateNewMap(string assetPath, string mapName) => _mapBuilder.CreateNewMap(assetPath, mapName, _baseGrid);
 	public void CreateTestMap(string path) => _mapBuilder.CreateTestMap(path,_baseGrid);
 	public void CreateMapFromJson(string mapName, string path) => _mapBuilder.CreateMapFromJson(mapName, path, _baseGrid);
 

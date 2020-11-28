@@ -64,7 +64,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Controller.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapBuilder\HexagonMapBuilder.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapBuilder\Interfaces\IHexagonMapBuilder.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapBuilder\Interfaces\IMapBuilder.cs" />
@@ -78,6 +77,9 @@
     <Compile Include="Assets\Scripts\GridSystem\MapTile.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapTransformControl.cs" />
     <Compile Include="Assets\Scripts\GridSystem\TileResourceLoader.cs" />
+    <Compile Include="Assets\Scripts\MapPainter\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\MapPainter\MapPainterController.cs" />
+    <Compile Include="Assets\Scripts\TestController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Jacob/Documents/Files/Unity/Projects/Grid System/Grid System/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
