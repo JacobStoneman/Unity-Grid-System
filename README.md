@@ -26,15 +26,27 @@ Dynamic Maps is an easy to use tool I created which builds on Unity's existing T
         Map.CreateMapFromJson("pathMap", "CheckerBoard/CheckerBoard");
     }
 ```
+## DOD
+- [ ] Class library that can be added to any project and allows for dynamic map creation
+- [ ] Basic Hex and rectangle maps implemented
+- [ ] An easy to understand file structure
+- [ ] A skeleton map editor that can be built upon in different projects
+- [ ] A clear README that explains what the project does and how to use it
 
-
-
+## Necessary UI
+- New hex map
+- New rectangle map
+- Save map to json (Move all json to a MapSaves folder)
+- Load from json
+- Tile Selection
 
 ## TODO
-
-- Writing to new file
-- Create new grid just from file?
-- Look at WriteAll path
+(After UI stuff)
+- Clean up code and file structure
+- Last minute changes
+- README
+- Upload finished project
+- Add to portfolio
 
 ## Notes
 
