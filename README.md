@@ -47,6 +47,7 @@ Dynamic Maps is an easy to use tool I created which builds on Unity's existing T
 - README
 - Upload finished project
 - Add to portfolio
+- Mapbuilder needs to be abstract
 
 ## Notes
 

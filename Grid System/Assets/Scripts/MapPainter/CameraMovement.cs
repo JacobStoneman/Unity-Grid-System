@@ -6,6 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     Camera cam;
     public int camStep = 1;
+    public BoolVariable UIInteraction;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,19 +22,22 @@ public class CameraMovement : MonoBehaviour
 
     void CheckScroll()
 	{
-        var d = Input.GetAxis("Mouse ScrollWheel");
-        if (d > 0f)
+        if (!UIInteraction.value)
         {
-            cam.orthographicSize--;
+            var d = Input.GetAxis("Mouse ScrollWheel");
+            if (d > 0f)
+            {
+                cam.orthographicSize--;
+            }
+            else if (d < 0f)
+            {
+                cam.orthographicSize++;
+            }
+            if (cam.orthographicSize <= 0)
+            {
+                cam.orthographicSize = 1;
+            }
         }
-        else if (d < 0f)
-        {
-            cam.orthographicSize++;
-        }
-        if(cam.orthographicSize<= 0)
-		{
-            cam.orthographicSize = 1;
-		}
     }
 
     void CheckInput()

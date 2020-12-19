@@ -1,7 +1,12 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - Controller
+    - BoolVariable
+    - CameraMovement
+    - DetectUIInteraction
+    - MapPainterController
+    - StringVariable
+    - UICoordText
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -20,15 +25,28 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/MapPainter.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
       Script: {instanceID: 0}
     - Class: 20
       Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
@@ -39,14 +57,50 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 570}
     - Class: 114
-      Script: {instanceID: 11192}
+      Script: {instanceID: 11150}
+    - Class: 114
+      Script: {instanceID: 11322}
+    - Class: 114
+      Script: {instanceID: 11362}
+    - Class: 114
+      Script: {instanceID: 11786}
+    - Class: 114
+      Script: {instanceID: 12202}
+    - Class: 114
+      Script: {instanceID: 12712}
+    - Class: 114
+      Script: {instanceID: 13058}
+    - Class: 114
+      Script: {instanceID: 13082}
+    - Class: 114
+      Script: {instanceID: 13092}
+    - Class: 114
+      Script: {instanceID: 13102}
+    - Class: 114
+      Script: {instanceID: 13896}
+    - Class: 114
+      Script: {instanceID: 14034}
+    - Class: 114
+      Script: {instanceID: 15274}
+    - Class: 114
+      Script: {instanceID: 15280}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
     - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -63,10 +117,10 @@ ScriptsOnlyBuild:
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: c45b79465710ae541b9eec5a23ed9d61
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Controller
+    className: TestController
   - hash:
       serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
@@ -429,6 +483,12 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
+      Hash: 71843de93d75cf04c522488631769d6a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraMovement
+  - hash:
+      serializedVersion: 2
       Hash: 4ef0f7d42cdb13479386e1f049c315aa
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner
@@ -439,6 +499,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Dropdown
+  - hash:
+      serializedVersion: 2
+      Hash: 3e623078d970d14981e2b96f745b67bf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MapPainterController
   - hash:
       serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
@@ -475,7 +541,31 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 5f0a1878b4792ac6d0fe1b5ac4d62202
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StringVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 6fe46bc460f38ae94c69ce2dccda44d5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UICoordText
+  - hash:
+      serializedVersion: 2
+      Hash: 51aa813aa07f4fb8826c577ac5b6e214
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DetectUIInteraction
+  - hash:
+      serializedVersion: 2
+      Hash: 687552b2a57127d6e76ef882be8ca8c2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BoolVariable
   platform: 5
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/MapPainter.unity
   playerPath: C:/Users/Jacob/Documents/Files/Unity/Builds/GridSystem/Grid System.exe
