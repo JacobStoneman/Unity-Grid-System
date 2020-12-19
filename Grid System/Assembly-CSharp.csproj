@@ -77,8 +77,9 @@
     <Compile Include="Assets\Scripts\GridSystem\MapTile.cs" />
     <Compile Include="Assets\Scripts\GridSystem\MapTransformControl.cs" />
     <Compile Include="Assets\Scripts\GridSystem\TileResourceLoader.cs" />
-    <Compile Include="Assets\Scripts\MapPainter\CameraMovement.cs" />
-    <Compile Include="Assets\Scripts\MapPainter\MapPainterController.cs" />
+    <Compile Include="Assets\Scripts\MapPainter\Controllers\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\MapPainter\Controllers\MapPainterController.cs" />
+    <Compile Include="Assets\Scripts\MapPainter\Controllers\UIEvents.cs" />
     <Compile Include="Assets\Scripts\MapPainter\ScriptableObjects\BoolVariable.cs" />
     <Compile Include="Assets\Scripts\MapPainter\ScriptableObjects\StringVariable.cs" />
     <Compile Include="Assets\Scripts\MapPainter\UI\DetectUIInteraction.cs" />
