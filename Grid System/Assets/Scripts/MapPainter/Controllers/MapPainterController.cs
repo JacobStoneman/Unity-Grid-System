@@ -12,15 +12,12 @@ public class MapPainterController : MonoBehaviour
 
     HexagonMapManager hexMap;
 
-    Dictionary<string, Tile> tiles;
-
     // Start is called before the first frame update
     void Start()
     {
         UIEvents.current.OnTileClicked += TileSelected;
 
         NewMap();
-        tiles = hexMap.GetTileAssets();
     }
 
     // Update is called once per frame
@@ -57,6 +54,8 @@ public class MapPainterController : MonoBehaviour
         hexMap.CreateNewMap("HexBoard/Tiles", "NewMap");
         hexMap.SetTileAtPos(new Vector3Int(0, 0, 0), "Tile1");
     }
+
+    public Dictionary<string, Tile> GetTileAssets() => hexMap.GetTileAssets();
 
     void TileSelected(int tileNum)
 	{

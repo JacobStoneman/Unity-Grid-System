@@ -79,10 +79,12 @@
     <Compile Include="Assets\Scripts\GridSystem\TileResourceLoader.cs" />
     <Compile Include="Assets\Scripts\MapPainter\Controllers\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\MapPainter\Controllers\MapPainterController.cs" />
+    <Compile Include="Assets\Scripts\MapPainter\Controllers\TileAssetLoaderView.cs" />
     <Compile Include="Assets\Scripts\MapPainter\Controllers\UIEvents.cs" />
     <Compile Include="Assets\Scripts\MapPainter\ScriptableObjects\BoolVariable.cs" />
     <Compile Include="Assets\Scripts\MapPainter\ScriptableObjects\StringVariable.cs" />
     <Compile Include="Assets\Scripts\MapPainter\UI\DetectUIInteraction.cs" />
+    <Compile Include="Assets\Scripts\MapPainter\UI\OnTileAssetUICreation.cs" />
     <Compile Include="Assets\Scripts\MapPainter\UI\UICoordText.cs" />
     <Compile Include="Assets\Scripts\TestController.cs" />
     <Reference Include="Unity.Timeline.Editor">
