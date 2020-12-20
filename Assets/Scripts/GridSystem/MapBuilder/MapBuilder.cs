@@ -141,6 +141,7 @@ public abstract class MapBuilder : IMapBuilder
 		return result;
 	}
 	public TileBase[] GetAllTiles() => Map.GetTilesBlock(Map.cellBounds);
+	public GameObject GetParentGrid() => Map.layoutGrid.gameObject;
 
 
 	public void SetTileAtPos(Vector3Int gridPos, string asset)

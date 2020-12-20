@@ -22,4 +22,5 @@ public interface IMapBuilder
 	void SetSwizzle(CellSwizzle swizzle);
 	void SetAnchor(Vector3 anchor);
 	void WriteMapData(string path);
+	GameObject GetParentGrid();
 }

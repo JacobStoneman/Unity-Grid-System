@@ -134,4 +134,7 @@ public abstract class MapManager
 	public void SetAnchor(Vector3 anchor) => _mapBuilder.SetAnchor(anchor);
 
 	public void SaveMap(string path) => _mapBuilder.WriteMapData(path);
+
+	public bool MapExists() => _baseGrid != null;
+	public void ClearMap() => Object.Destroy(_mapBuilder.GetParentGrid());
 }

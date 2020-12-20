@@ -42,7 +42,7 @@ public class MapPainterController : MonoBehaviour
         Vector3Int mousePos = hexMap.GridPosFromMouse(Camera.main);
         if (Input.GetMouseButton(0))
         {
-            hexMap.SetTileAtPos(hexMap.GridPosFromMouse(Camera.main), "Tile1");
+            hexMap.SetTileAtPos(hexMap.GridPosFromMouse(Camera.main), selectedTile);
         } 
         else if (Input.GetMouseButton(1))
 		{
@@ -53,6 +53,8 @@ public class MapPainterController : MonoBehaviour
 
     void NewMap(string path, string name)
 	{
+        if (hexMap != null && hexMap.MapExists()) hexMap.ClearMap();
+
         hexMap = new HexagonMapManager();
         hexMap.CreateNewMap(path, name);
         selectedTile = hexMap.GetTileAssets().Keys.ToArray()[0];
