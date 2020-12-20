@@ -1,0 +1,5 @@
+{
+  "Path": "HexBoard/Tiles",
+  "xLength": 5,
+  "Data": [ "Tile1", "Tile2", "Tile3", "Tile3", "Tile2", "Tile2", "Tile2", "Tile2", "Tile2", "Tile2", "Tile3", "Tile2", "Tile2", "Tile3", "Tile2", "Tile3", "Tile2", "Tile2", "Tile3", "Tile2", "Tile3", "Tile2", "Tile2", "Tile2", "Tile2", "Tile3", "Tile2", "Tile2", "Tile3", "Tile2", "Tile2", "Tile3", "Tile2", "Tile2" ]
+}

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,13 +12,15 @@ public class MapPainterController : MonoBehaviour
     public BoolVariable MouseOnScreen;
 
     HexagonMapManager hexMap;
+    string selectedTile;
 
     // Start is called before the first frame update
     void Start()
     {
         UIEvents.current.OnTileClicked += TileSelected;
+        UIEvents.current.OnNewMapClicked += NewMap;
 
-        NewMap();
+        NewMap("Hexboard/Tiles", "New Map");
     }
 
     // Update is called once per frame
@@ -48,11 +51,13 @@ public class MapPainterController : MonoBehaviour
         CoordText.value = $"{mousePos.x},{mousePos.y}";
     }
 
-    void NewMap()
+    void NewMap(string path, string name)
 	{
         hexMap = new HexagonMapManager();
-        hexMap.CreateNewMap("HexBoard/Tiles", "NewMap");
-        hexMap.SetTileAtPos(new Vector3Int(0, 0, 0), "Tile1");
+        hexMap.CreateNewMap(path, name);
+        selectedTile = hexMap.GetTileAssets().Keys.ToArray()[0];
+        hexMap.SetTileAtPos(new Vector3Int(0, 0, 0), selectedTile);
+        UIEvents.current.LoadAssets();
     }
 
     public Dictionary<string, Tile> GetTileAssets() => hexMap.GetTileAssets();
@@ -64,5 +69,6 @@ public class MapPainterController : MonoBehaviour
 	private void OnDestroy()
 	{
         UIEvents.current.OnTileClicked -= TileSelected;
+        UIEvents.current.OnNewMapClicked -= NewMap;
     }
 }

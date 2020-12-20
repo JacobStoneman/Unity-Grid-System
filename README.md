@@ -61,3 +61,6 @@ Dynamic Maps is an easy to use tool I created which builds on Unity's existing T
 [Loading assets from path](https://docs.unity3d.com/ScriptReference/AssetDatabase.LoadAssetAtPath.html)
 
 [3D Camera position](https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html)
+
+[Loading resources alternative](https://docs.unity3d.com/Manual/StreamingAssets.html)
+

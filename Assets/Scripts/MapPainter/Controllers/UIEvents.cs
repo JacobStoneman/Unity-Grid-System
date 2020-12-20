@@ -12,15 +12,12 @@ public class UIEvents : MonoBehaviour
         current = this;
     }
 
-    public event Action OnNewMapClicked;
-    public void NewMapClicked() => OnNewMapClicked?.Invoke();
+    public event Action<string,string> OnNewMapClicked;
+    public void NewMapClicked(string path, string name) => OnNewMapClicked?.Invoke(path,name);
     
-    public event Action OnLoadAssetsClicked;
-    public void LoadAssetsClicked() => OnLoadAssetsClicked?.Invoke();
+    public event Action OnLoadAssets;
+    public void LoadAssets() => OnLoadAssets?.Invoke();
 
     public event Action<int> OnTileClicked;
     public void TileClicked(int tileNum) => OnTileClicked?.Invoke(tileNum);
-
-    public event Action<Dictionary<string, Tile>> OnLoadTileAssets;
-    public void LoadTileAssets(Dictionary<string, Tile> tileAssets) => OnLoadTileAssets?.Invoke(tileAssets);
 }

@@ -14,7 +14,7 @@ public class TileAssetLoaderView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIEvents.current.OnLoadAssetsClicked += DisplayAssets;
+        UIEvents.current.OnLoadAssets += DisplayAssets;
     }
 
     public void DisplayAssets()
@@ -37,6 +37,6 @@ public class TileAssetLoaderView : MonoBehaviour
 
 	private void OnDestroy()
 	{
-        UIEvents.current.OnLoadAssetsClicked -= DisplayAssets;
+        UIEvents.current.OnLoadAssets -= DisplayAssets;
 	}
 }
