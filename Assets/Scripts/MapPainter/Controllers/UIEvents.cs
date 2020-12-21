@@ -18,6 +18,9 @@ public class UIEvents : MonoBehaviour
     public event Action OnLoadAssets;
     public void LoadAssets() => OnLoadAssets?.Invoke();
 
-    public event Action<int> OnTileClicked;
-    public void TileClicked(int tileNum) => OnTileClicked?.Invoke(tileNum);
+    public event Action<Tile> OnNewTileSet;
+    public void NewTileSet(Tile tile) => OnNewTileSet?.Invoke(tile);
+
+    public event Action<GameObject> OnTileAssetClicked;
+    public void TileClicked(GameObject asset) => OnTileAssetClicked?.Invoke(asset);
 }

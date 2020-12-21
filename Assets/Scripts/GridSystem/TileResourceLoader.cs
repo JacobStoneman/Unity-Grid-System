@@ -16,12 +16,14 @@ public class TileResourceLoader
 
 	private void LoadAllTiles()
 	{
-		object[] loaded = Resources.LoadAll(Path, typeof(Tile));
-
-		TileAssets = new Dictionary<string, Tile>();
-		foreach(Object obj in loaded)
+		if (Path.Length > 0)
 		{
-			TileAssets.Add(obj.name,(Tile)obj);
+			object[] loaded = Resources.LoadAll(Path, typeof(Tile));
+			TileAssets = new Dictionary<string, Tile>();
+			foreach (Object obj in loaded)
+			{
+				TileAssets.Add(obj.name, (Tile)obj);
+			}
 		}
 	}
 }

@@ -27,12 +27,15 @@ public class TileAssetLoaderView : MonoBehaviour
 
         Dictionary<string, Tile> tiles = controller.GetTileAssets();
 
-        foreach(KeyValuePair<string,Tile> pair in tiles)
-		{
-            GameObject newButton = Instantiate(assetPrefab, transform);
-            assetButtons.Add(newButton);
-            newButton.GetComponent<OnTileAssetUICreation>().CreateAsset(pair.Key,pair.Value);
-		}
+        if (tiles != null)
+        {
+            foreach (KeyValuePair<string, Tile> pair in tiles)
+            {
+                GameObject newButton = Instantiate(assetPrefab, transform);
+                assetButtons.Add(newButton);
+                newButton.GetComponent<TileAssetUI>().CreateAsset(pair.Key, pair.Value);
+            }
+        }
 	}
 
 	private void OnDestroy()

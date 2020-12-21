@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4488138005631361537}
   - component: {fileID: 4488138005631361539}
   - component: {fileID: 4488138005631361538}
-  - component: {fileID: 4969020336817004745}
+  - component: {fileID: 1830003205600599062}
   m_Layer: 0
   m_Name: TileAssetPanel
-  m_TagString: Untagged
+  m_TagString: TileAssetPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4969020336817004745
+--- !u!114 &1830003205600599062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,11 +85,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4488138005631361536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 515d9a1e6acb0d746bb6fea8a9a70d19, type: 3}
+  m_Script: {fileID: 11500000, guid: c8430e05f30506e41bea80ea671bd23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 4488138007081778976}
   text: {fileID: 4488138006425018346}
+  SelectedColour: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
+  UnselectedColour: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
 --- !u!1 &4488138006425018344
 GameObject:
   m_ObjectHideFlags: 0
