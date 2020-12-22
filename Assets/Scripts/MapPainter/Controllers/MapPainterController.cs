@@ -20,6 +20,7 @@ public class MapPainterController : MonoBehaviour
     {
         UIEvents.current.OnNewTileSet += TileSelected;
         UIEvents.current.OnNewMapClicked += NewMap;
+        UIEvents.current.OnSaveClicked += Save;
 
         NewMap("Hexboard/Tiles", "New Map");
     }
@@ -73,14 +74,14 @@ public class MapPainterController : MonoBehaviour
 
     public Dictionary<string, Tile> GetTileAssets() => hexMap.GetTileAssets();
 
-    void TileSelected(Tile tile)
-	{
-        selectedTile = tile.name;
-	}
+    void Save(string path) => hexMap.SaveMap(path);
+
+    void TileSelected(Tile tile) => selectedTile = tile.name;
 
 	private void OnDestroy()
 	{
         UIEvents.current.OnNewTileSet -= TileSelected;
         UIEvents.current.OnNewMapClicked -= NewMap;
+        UIEvents.current.OnSaveClicked -= Save;
     }
 }
