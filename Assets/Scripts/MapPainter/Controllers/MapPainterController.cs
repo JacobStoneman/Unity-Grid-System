@@ -22,7 +22,7 @@ public class MapPainterController : MonoBehaviour
         UIEvents.current.OnNewMapClicked += NewMap;
         UIEvents.current.OnSaveClicked += Save;
 
-        NewMap("Hexboard/Tiles", "New Map");
+        NewMap("Hexboard/HexboardTiles", "New Map");
     }
 
     // Update is called once per frame

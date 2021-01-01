@@ -70,7 +70,7 @@ public abstract class MapBuilder : IMapBuilder
 		newData.Data = tileNames.ToArray();
 
 		string saveData = JsonUtility.ToJson(newData);
-		File.WriteAllText($"Assets/Resources/{path}.json", saveData);
+		File.WriteAllText($"{Application.dataPath}/Exports/{path}.json", saveData);
 	}
 	
 	protected void LoadTileSet(string path) => _loader = new TileResourceLoader(path);

@@ -5,10 +5,7 @@ public class Initialiser : MonoBehaviour
 {
 	private void Awake()
 	{
-		if (!Directory.Exists($"{Application.dataPath}/TileSets"))
-		{
-			Directory.CreateDirectory($"{Application.dataPath}/TileSets");
-		}
+		//TODO: This should be moved to documents or something
 		if (!Directory.Exists($"{Application.dataPath}/Exports"))
 		{
 			Directory.CreateDirectory($"{Application.dataPath}/Exports");

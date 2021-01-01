@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NewMapClick : MonoBehaviour
 {
-    [SerializeField] InputField pathField;
+    [SerializeField] TMP_InputField pathField;
 
     public void NewMapCreate() => UIEvents.current.NewMapClicked(pathField.text, "New Map");
 
