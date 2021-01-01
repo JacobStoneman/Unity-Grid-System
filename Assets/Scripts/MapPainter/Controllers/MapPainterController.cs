@@ -5,6 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
+public enum MapType{
+    HEX,
+    RECTANGLE
+}
+
 public class MapPainterController : MonoBehaviour
 {
     public GameObject highlight;
@@ -12,7 +17,8 @@ public class MapPainterController : MonoBehaviour
     public BoolVariable UIInteraction;
     public BoolVariable MouseOnScreen;
 
-    HexagonMapManager hexMap;
+    MapType mType = MapType.HEX;
+    MapManager newMap;
     string selectedTile;
 
     // Start is called before the first frame update
@@ -21,6 +27,7 @@ public class MapPainterController : MonoBehaviour
         UIEvents.current.OnNewTileSet += TileSelected;
         UIEvents.current.OnNewMapClicked += NewMap;
         UIEvents.current.OnSaveClicked += Save;
+        UIEvents.current.OnMapTypeSet += SetMapType;
 
         NewMap("Hexboard/HexboardTiles", "New Map");
     }
@@ -32,7 +39,7 @@ public class MapPainterController : MonoBehaviour
         if (!UIInteraction.value && MouseOnScreen.value)
         {
             highlight.gameObject.SetActive(true);
-            highlight.transform.position = hexMap.GetSelectorPosition(Camera.main);
+            highlight.transform.position = newMap.GetSelectorPosition(Camera.main);
             GridInteract();
         } else
 		{
@@ -46,35 +53,49 @@ public class MapPainterController : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                hexMap.SetTileAtPos(hexMap.GridPosFromMouse(Camera.main), selectedTile);
+                newMap.SetTileAtPos(newMap.GridPosFromMouse(Camera.main), selectedTile);
             }
             else if (Input.GetMouseButton(1))
             {
-                hexMap.SetTileAtPos(hexMap.GridPosFromMouse(Camera.main), null);
+                newMap.SetTileAtPos(newMap.GridPosFromMouse(Camera.main), null);
             }
         }
-        Vector3Int mousePos = hexMap.GridPosFromMouse(Camera.main);
+        Vector3Int mousePos = newMap.GridPosFromMouse(Camera.main);
         CoordText.value = $"{mousePos.x},{mousePos.y}";
     }
 
     void NewMap(string path, string name)
 	{
-        if (hexMap != null && hexMap.MapExists()) hexMap.ClearMap();
+        if (newMap != null && newMap.MapExists()) newMap.ClearMap();
         selectedTile = null;
 
-        hexMap = new HexagonMapManager();
-        hexMap.CreateNewMap(path, name);
-        if (hexMap.GetTileAssets() != null && hexMap.GetTileAssets().Count > 0)
+		switch (mType)
+		{
+            case MapType.HEX:
+                newMap = new HexagonMapManager();
+                break;
+            case MapType.RECTANGLE:
+                newMap = new RectangleMapManager();
+                break;
+            default:
+                print("Error");
+                break;
+		}
+
+        newMap.CreateNewMap(path, name);
+        if (newMap.GetTileAssets() != null && newMap.GetTileAssets().Count > 0)
         {
-            selectedTile = hexMap.GetTileAssets().Keys.ToArray()[0];
-            hexMap.SetTileAtPos(new Vector3Int(0, 0, 0), selectedTile);
+            selectedTile = newMap.GetTileAssets().Keys.ToArray()[0];
+            newMap.SetTileAtPos(new Vector3Int(0, 0, 0), selectedTile);
         }
         UIEvents.current.LoadAssets();
     }
 
-    public Dictionary<string, Tile> GetTileAssets() => hexMap.GetTileAssets();
+    void SetMapType(int value) => mType = (MapType)value;
 
-    void Save(string path) => hexMap.SaveMap(path);
+    public Dictionary<string, Tile> GetTileAssets() => newMap.GetTileAssets();
+
+    void Save(string path) => newMap.SaveMap(path);
 
     void TileSelected(Tile tile) => selectedTile = tile.name;
 
@@ -83,5 +104,6 @@ public class MapPainterController : MonoBehaviour
         UIEvents.current.OnNewTileSet -= TileSelected;
         UIEvents.current.OnNewMapClicked -= NewMap;
         UIEvents.current.OnSaveClicked -= Save;
+        UIEvents.current.OnMapTypeSet -= SetMapType;
     }
 }

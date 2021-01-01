@@ -26,4 +26,7 @@ public class UIEvents : MonoBehaviour
 
     public event Action<GameObject> OnTileAssetClicked;
     public void TileClicked(GameObject asset) => OnTileAssetClicked?.Invoke(asset);
+
+    public event Action<int> OnMapTypeSet;
+    public void MapTypeSet(int value) => OnMapTypeSet?.Invoke(value);
 }
