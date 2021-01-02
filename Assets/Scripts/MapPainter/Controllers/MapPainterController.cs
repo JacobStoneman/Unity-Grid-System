@@ -17,7 +17,7 @@ public class MapPainterController : MonoBehaviour
     public BoolVariable UIInteraction;
     public BoolVariable MouseOnScreen;
 
-    MapType mType = MapType.HEX;
+    public MapType mType = MapType.HEX;
     MapManager newMap;
     string selectedTile;
 

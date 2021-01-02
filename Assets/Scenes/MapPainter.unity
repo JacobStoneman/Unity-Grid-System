@@ -2751,6 +2751,7 @@ MonoBehaviour:
   CoordText: {fileID: 11400000, guid: 936c5952b5e2c4d4ba247c66a1d38a99, type: 2}
   UIInteraction: {fileID: 11400000, guid: 9d01f0e1dd70c4148803fb16ef426651, type: 2}
   MouseOnScreen: {fileID: 11400000, guid: b53b23f137abbba4b9e18821eca5cfee, type: 2}
+  mType: 0
 --- !u!114 &1080704496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2773,6 +2774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120057036}
   - component: {fileID: 1120057035}
+  - component: {fileID: 1120057037}
   m_Layer: 0
   m_Name: Selector
   m_TagString: Untagged
@@ -2844,6 +2846,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1120057037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120057034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be660012b32243643960c3774b2195a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1080704495}
+  hex: {fileID: 21300000, guid: eeaed4f41acc4c548acc380b3caae94c, type: 3}
+  rec: {fileID: 21300000, guid: f97ac0797524c3b41bbfd5b1bf007ca9, type: 3}
 --- !u!1 &1152586670
 GameObject:
   m_ObjectHideFlags: 0

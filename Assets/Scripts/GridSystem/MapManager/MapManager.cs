@@ -93,7 +93,7 @@ public abstract class MapManager
 		return result;
 	}
 
-	public Vector3 GetSelectorPosition(Camera cam)
+	public virtual Vector3 GetSelectorPosition(Camera cam)
 	{
 		return _baseGrid.CellToWorld(GridPosFromMouse(cam));
 	}

@@ -17,4 +17,12 @@ public class RectangleMapManager : MapManager
 		_mapBuilder = new RectangleMapBuilder(cellSize, swizzle);
 		base._mapBuilder = _mapBuilder;
 	}
+
+	public override Vector3 GetSelectorPosition(Camera cam)
+	{
+		Vector3 ret = _baseGrid.CellToWorld(GridPosFromMouse(cam));
+		ret.x += 0.5f;
+		ret.y += 0.5f;
+		return ret;
+	}
 }
