@@ -1,14 +1,34 @@
 ﻿using System.IO;
 using UnityEngine;
+using TMPro;
+using System.Linq;
+using System.Collections.Generic;
 
 public class Initialiser : MonoBehaviour
 {
+	[SerializeField] TMP_Dropdown loadDropdown;
+	string[] allfiles;
 	private void Awake()
 	{
-		//TODO: This should be moved to documents or something
-		if (!Directory.Exists($"{Application.dataPath}/Exports"))
+		string exportPath = $"{Application.dataPath}/Exports";
+		if (!Directory.Exists(exportPath));
 		{
-			Directory.CreateDirectory($"{Application.dataPath}/Exports");
+			Directory.CreateDirectory(exportPath);
 		}
+
+		allfiles = Directory.GetFiles(exportPath, "*.*", SearchOption.AllDirectories);
+		List<string> formatted = new List<string>();
+
+		foreach(string str in allfiles)
+		{
+			if (!str.Contains(".meta"))
+			{
+				string newStr = str.Replace($@"{exportPath}\", "");
+				newStr = newStr.Replace(".json", "");
+				formatted.Add(newStr);
+			}
+		}
+
+		loadDropdown.AddOptions(formatted);
 	}
 }
