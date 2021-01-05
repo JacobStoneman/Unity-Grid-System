@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TestTile2
+  m_Name: Magic
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 764ae9ed76a104a4b9006ce4536ccee5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d31a03cb4f471f9419e5c349f412ccf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

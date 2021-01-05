@@ -29,4 +29,7 @@ public class UIEvents : MonoBehaviour
 
     public event Action<int> OnMapTypeSet;
     public void MapTypeSet(int value) => OnMapTypeSet?.Invoke(value);
+
+    public event Action<string> OnLoadClicked;
+    public void LoadClicked(string path) => OnLoadClicked?.Invoke(path);
 }

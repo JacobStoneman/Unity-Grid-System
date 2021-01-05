@@ -39,10 +39,16 @@ public abstract class MapBuilder : IMapBuilder
 	/// <returns>The data for the map including the tile assets and data for each grid position</returns>
 	protected MapData ReadMapData(string path)
 	{
-		TextAsset jsonFile = (TextAsset)Resources.Load(path, typeof(TextAsset));
-		MapData loadedData = JsonUtility.FromJson<MapData>(jsonFile.text);
-		_loader = new TileResourceLoader(loadedData.Path);
-		return loadedData;
+		using (StreamReader r = new StreamReader(path))
+		{
+			string json = r.ReadToEnd();
+			MapData loadedData = JsonUtility.FromJson<MapData>(json);
+			_loader = new TileResourceLoader(loadedData.Path);
+			return loadedData;
+		}
+
+		//TextAsset jsonFile = (TextAsset)Resources.Load(path, typeof(TextAsset));
+		//MapData loadedData = JsonUtility.FromJson<MapData>(jsonFile.text);
 	}
 	public void WriteMapData(string fileName, string path)
 	{

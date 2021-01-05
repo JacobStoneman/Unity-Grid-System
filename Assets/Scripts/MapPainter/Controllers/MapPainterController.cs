@@ -28,6 +28,7 @@ public class MapPainterController : MonoBehaviour
         UIEvents.current.OnNewMapClicked += NewMap;
         UIEvents.current.OnSaveClicked += Save;
         UIEvents.current.OnMapTypeSet += SetMapType;
+        UIEvents.current.OnLoadClicked += Load;
 
         NewMap("Hexboard", "New Map");
     }
@@ -46,6 +47,33 @@ public class MapPainterController : MonoBehaviour
             highlight.gameObject.SetActive(false);
 		}
     }
+
+    void Load(string path)
+	{
+        if (newMap != null && newMap.MapExists()) newMap.ClearMap();
+        selectedTile = null;
+
+        switch (mType)
+        {
+            case MapType.HEX:
+                newMap = new HexagonMapManager();
+                break;
+            case MapType.RECTANGLE:
+                newMap = new RectangleMapManager();
+                break;
+            default:
+                print("Error");
+                break;
+        }
+
+        newMap.CreateMapFromJson("New Map", path);
+        if (newMap.GetTileAssets() != null && newMap.GetTileAssets().Count > 0)
+        {
+            selectedTile = newMap.GetTileAssets().Keys.ToArray()[0];
+            newMap.SetTileAtPos(new Vector3Int(0, 0, 0), selectedTile);
+        }
+        UIEvents.current.LoadAssets(); 
+	}
 
     void GridInteract()
     {
@@ -105,5 +133,6 @@ public class MapPainterController : MonoBehaviour
         UIEvents.current.OnNewMapClicked -= NewMap;
         UIEvents.current.OnSaveClicked -= Save;
         UIEvents.current.OnMapTypeSet -= SetMapType;
+        UIEvents.current.OnLoadClicked -= Load;
     }
 }

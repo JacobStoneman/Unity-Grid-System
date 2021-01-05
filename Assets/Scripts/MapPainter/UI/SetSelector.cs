@@ -15,9 +15,14 @@ public class SetSelector : MonoBehaviour
 	private void Start()
 	{
 		UIEvents.current.OnNewMapClicked += NewMapCreated;
+		UIEvents.current.OnLoadClicked += LoadMap;
 	}
 
-	void NewMapCreated(string val, string va2)
+	void LoadMap(string val) => SetSelect();
+
+	void NewMapCreated(string val, string val2) => SetSelect();
+
+	void SetSelect()
 	{
 		switch (controller.mType)
 		{
@@ -33,5 +38,6 @@ public class SetSelector : MonoBehaviour
 	private void OnDestroy()
 	{
 		UIEvents.current.OnNewMapClicked -= NewMapCreated;
+		UIEvents.current.OnLoadClicked -= LoadMap;
 	}
 }

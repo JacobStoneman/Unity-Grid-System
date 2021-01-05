@@ -3491,6 +3491,7 @@ GameObject:
   - component: {fileID: 1084709249}
   - component: {fileID: 1084709248}
   - component: {fileID: 1084709247}
+  - component: {fileID: 1084709250}
   m_Layer: 0
   m_Name: LoadMapButton
   m_TagString: Untagged
@@ -3560,7 +3561,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1084709248}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1084709250}
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1084709248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3597,6 +3609,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084709245}
   m_CullTransparentMesh: 0
+--- !u!114 &1084709250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084709245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddec33371e11574ea2371c66e74c9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadDropdown: {fileID: 435868455}
+  savePath: {fileID: 11400000, guid: 5985470ada29df84cb668f1cabe2fa44, type: 2}
+  filePath: 
 --- !u!1 &1120057034
 GameObject:
   m_ObjectHideFlags: 0
@@ -5361,7 +5388,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1956518208}
   m_HandleRect: {fileID: 1956518207}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
