@@ -1,5 +1,0 @@
-{
-  "Path": "CheckerBoard/Tiles",
-  "xLength": 8,
-  "Data": [ "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1", "TestTile2", "TestTile1" ]
-}

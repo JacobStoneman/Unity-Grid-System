@@ -18,10 +18,15 @@ public class Initialiser : MonoBehaviour
 			Directory.CreateDirectory(exportPath.value);
 		}
 
+		AddOptions();
+	}
+
+	public void AddOptions()
+	{
 		allfiles = Directory.GetFiles(exportPath.value, "*.*", SearchOption.AllDirectories);
 		List<string> formatted = new List<string>();
 
-		foreach(string str in allfiles)
+		foreach (string str in allfiles)
 		{
 			if (!str.Contains(".meta"))
 			{
@@ -31,6 +36,7 @@ public class Initialiser : MonoBehaviour
 			}
 		}
 
+		loadDropdown.ClearOptions();
 		loadDropdown.AddOptions(formatted);
 	}
 }

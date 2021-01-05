@@ -70,7 +70,6 @@ public class MapPainterController : MonoBehaviour
         if (newMap.GetTileAssets() != null && newMap.GetTileAssets().Count > 0)
         {
             selectedTile = newMap.GetTileAssets().Keys.ToArray()[0];
-            newMap.SetTileAtPos(new Vector3Int(0, 0, 0), selectedTile);
         }
         UIEvents.current.LoadAssets(); 
 	}
