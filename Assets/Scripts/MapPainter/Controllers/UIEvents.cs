@@ -15,8 +15,8 @@ public class UIEvents : MonoBehaviour
     public event Action<string,string> OnNewMapClicked;
     public void NewMapClicked(string path, string name) => OnNewMapClicked?.Invoke(path,name);
 
-    public event Action<string> OnSaveClicked;
-    public void SaveClicked(string path) => OnSaveClicked?.Invoke(path);
+    public event Action<string, string> OnSaveClicked;
+    public void SaveClicked(string fileName, string path) => OnSaveClicked?.Invoke(fileName, path);
     
     public event Action OnLoadAssets;
     public void LoadAssets() => OnLoadAssets?.Invoke();

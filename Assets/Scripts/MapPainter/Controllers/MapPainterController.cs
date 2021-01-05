@@ -95,7 +95,7 @@ public class MapPainterController : MonoBehaviour
 
     public Dictionary<string, Tile> GetTileAssets() => newMap.GetTileAssets();
 
-    void Save(string path) => newMap.SaveMap(path);
+    void Save(string fileName, string path) => newMap.SaveMap(fileName, path);
 
     void TileSelected(Tile tile) => selectedTile = tile.name;
 

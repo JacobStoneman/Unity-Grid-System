@@ -21,6 +21,6 @@ public interface IMapBuilder
 	void SetScale(Vector3 scale);
 	void SetSwizzle(CellSwizzle swizzle);
 	void SetAnchor(Vector3 anchor);
-	void WriteMapData(string path);
+	void WriteMapData(string fileName, string path);
 	GameObject GetParentGrid();
 }

@@ -44,7 +44,7 @@ public abstract class MapBuilder : IMapBuilder
 		_loader = new TileResourceLoader(loadedData.Path);
 		return loadedData;
 	}
-	public void WriteMapData(string path)
+	public void WriteMapData(string fileName, string path)
 	{
 		MapTransform.SetOrigin(Map);
 		MapData newData = new MapData();
@@ -70,7 +70,7 @@ public abstract class MapBuilder : IMapBuilder
 		newData.Data = tileNames.ToArray();
 
 		string saveData = JsonUtility.ToJson(newData);
-		File.WriteAllText($"{Application.dataPath}/Exports/{path}.json", saveData);
+		File.WriteAllText($"{path}/{fileName}.json", saveData);
 	}
 	
 	protected void LoadTileSet(string path) => _loader = new TileResourceLoader(path);
