@@ -27,4 +27,4 @@ An API that builds on Unity's existing Tilemap implementation to provide more op
 ```
 
 ### Map Editor
-[Editor](Screenshots/HexMap.png)
+![Editor](Screenshots/HexMap.png)
