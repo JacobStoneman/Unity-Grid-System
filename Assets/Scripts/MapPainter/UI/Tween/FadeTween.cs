@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class SizeTween : MonoBehaviour
+public class FadeTween : MonoBehaviour
 {
 	[SerializeField] RectTransform rect;
 	[Space(10)]
@@ -13,8 +13,8 @@ public class SizeTween : MonoBehaviour
 	[SerializeField] Vector2 pivot;
 	[Space(10)]
 
-	[SerializeField] Vector2 initSize;
-	[SerializeField] Vector2 targetSize;
+	[SerializeField] float initAlpha;
+	[SerializeField] float targetAlpha;
 	[Space(10)]
 
 	[SerializeField] float duration;
@@ -28,26 +28,18 @@ public class SizeTween : MonoBehaviour
 
 	bool tweening;
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.P) && !tweening)
-		{
-			Revert();
-		}
-	}
-
-	public void Scale()
+	public void Fade()
 	{
 		OnStartIn();
 		rect.pivot = pivot;
-		LeanTween.size(rect, targetSize, duration).setDelay(delay).setOnComplete(OnCompleteIn).setEase(inType);
+		LeanTween.alpha(rect, targetAlpha, duration).setDelay(delay).setOnComplete(OnCompleteIn).setEase(inType);
 	}
 
 	void Revert()
 	{
 		OnStartOut();
 		rect.pivot = pivot;
-		LeanTween.size(rect, initSize, duration).setDelay(delay).setOnComplete(OnCompleteOut).setEase(outType);
+		LeanTween.alpha(rect, initAlpha, duration).setDelay(delay).setOnComplete(OnCompleteOut).setEase(outType);
 	}
 
 	void OnStartIn()

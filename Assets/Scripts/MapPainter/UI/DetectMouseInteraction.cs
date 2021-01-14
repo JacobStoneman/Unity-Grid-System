@@ -8,6 +8,9 @@ public class DetectMouseInteraction : MonoBehaviour
 {
     public bool mouseHover;
 
-    public void EnterUI() => mouseHover = true;
+    public void EnterUI()
+    {
+
+    }
     public void ExitUI() => mouseHover = false;
 }
