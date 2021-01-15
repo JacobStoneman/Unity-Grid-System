@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class PopUpController : MonoBehaviour
 {
     [SerializeField] UnityEvent StartEvent;
+    [SerializeField] float DestroyDelay;
     void Start() => StartEvent?.Invoke();
 
-    public void DestroyOnClose() => Destroy(gameObject);
+    public void DestroyOnClose() => Destroy(gameObject, DestroyDelay);
 }
