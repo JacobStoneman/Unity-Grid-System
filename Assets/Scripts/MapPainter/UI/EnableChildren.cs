@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class EnableChildren : MonoBehaviour
 {
+	[SerializeField] List<GameObject> children;
+	[SerializeField] GameObject icon;
 	private void Start()
 	{
-		foreach(Transform child in transform)
+		foreach(GameObject child in children)
 		{
-			child.gameObject.SetActive(false);
+			child.SetActive(false);
 		}
 	}
 
 	public void Enable()
 	{
-		foreach (Transform child in transform)
+		foreach (GameObject child in children)
 		{
-			child.gameObject.SetActive(true);
+			child.SetActive(true);
 		}
 	}
 
 	public void Disable()
 	{
-		foreach (Transform child in transform)
+		foreach (GameObject child in children)
 		{
-			child.gameObject.SetActive(false);
+			child.SetActive(false);
 		}
 	}
+
+	public void ToggleIcon(bool toggle) => icon.SetActive(toggle);
 }

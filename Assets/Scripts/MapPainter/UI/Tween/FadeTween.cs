@@ -30,16 +30,22 @@ public class FadeTween : MonoBehaviour
 
 	public void Fade()
 	{
-		OnStartIn();
-		rect.pivot = pivot;
-		LeanTween.alpha(rect, targetAlpha, duration).setDelay(delay).setOnComplete(OnCompleteIn).setEase(inType);
+		if (!tweening)
+		{
+			OnStartIn();
+			rect.pivot = pivot;
+			LeanTween.alpha(rect, targetAlpha, duration).setDelay(delay).setOnComplete(OnCompleteIn).setEase(inType);
+		}
 	}
 
-	void Revert()
+	public void Revert()
 	{
-		OnStartOut();
-		rect.pivot = pivot;
-		LeanTween.alpha(rect, initAlpha, duration).setDelay(delay).setOnComplete(OnCompleteOut).setEase(outType);
+		if (!tweening)
+		{
+			OnStartOut();
+			rect.pivot = pivot;
+			LeanTween.alpha(rect, initAlpha, duration).setDelay(delay).setOnComplete(OnCompleteOut).setEase(outType);
+		}
 	}
 
 	void OnStartIn()

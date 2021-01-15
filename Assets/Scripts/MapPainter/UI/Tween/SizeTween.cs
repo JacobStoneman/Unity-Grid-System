@@ -28,26 +28,24 @@ public class SizeTween : MonoBehaviour
 
 	bool tweening;
 
-	private void Update()
+	public void Scale()
 	{
-		if (Input.GetKeyDown(KeyCode.P) && !tweening)
+		if (!tweening)
 		{
-			Revert();
+			OnStartIn();
+			rect.pivot = pivot;
+			LeanTween.size(rect, targetSize, duration).setDelay(delay).setOnComplete(OnCompleteIn).setEase(inType);
 		}
 	}
 
-	public void Scale()
+	public void Revert()
 	{
-		OnStartIn();
-		rect.pivot = pivot;
-		LeanTween.size(rect, targetSize, duration).setDelay(delay).setOnComplete(OnCompleteIn).setEase(inType);
-	}
-
-	void Revert()
-	{
-		OnStartOut();
-		rect.pivot = pivot;
-		LeanTween.size(rect, initSize, duration).setDelay(delay).setOnComplete(OnCompleteOut).setEase(outType);
+		if (!tweening)
+		{
+			OnStartOut();
+			rect.pivot = pivot;
+			LeanTween.size(rect, initSize, duration).setDelay(delay).setOnComplete(OnCompleteOut).setEase(outType);
+		}
 	}
 
 	void OnStartIn()
