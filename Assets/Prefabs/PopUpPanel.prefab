@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7209031174628597673}
   - component: {fileID: 7209031174628597672}
   - component: {fileID: 8621954740874111600}
+  - component: {fileID: 924702199089524336}
   m_Layer: 0
   m_Name: PopUpPanel
   m_TagString: Untagged
@@ -95,7 +96,7 @@ MonoBehaviour:
   pivot: {x: 0.5, y: 0.5}
   initSize: {x: 0, y: 0}
   targetSize: {x: 500, y: 300}
-  duration: 0.5
+  duration: 0.25
   delay: 0
   onStartInCallBack:
     m_PersistentCalls:
@@ -184,6 +185,18 @@ MonoBehaviour:
   children:
   - {fileID: 7808013144103481087}
   icon: {fileID: 0}
+--- !u!114 &924702199089524336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7209031174628597674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce96dc9fdc1f79246af08d0817b92f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7808013144103481087
 GameObject:
   m_ObjectHideFlags: 0

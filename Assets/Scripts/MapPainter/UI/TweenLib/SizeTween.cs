@@ -21,10 +21,10 @@ public class SizeTween : MonoBehaviour
 	[SerializeField] float delay;
 	[Space(10)]
 
-	[SerializeField] UnityEvent onStartInCallBack;
-	[SerializeField] UnityEvent onCompleteInCallBack;
-	[SerializeField] UnityEvent onStartOutCallBack;
-	[SerializeField] UnityEvent onCompleteOutCallBack;
+	public UnityEvent onStartInCallBack;
+	public UnityEvent onCompleteInCallBack;
+	public UnityEvent onStartOutCallBack;
+	public UnityEvent onCompleteOutCallBack;
 
 	bool tweening;
 
