@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7529412}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -90,8 +90,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 4488138007081778976}
   text: {fileID: 4488138006425018346}
-  SelectedColour: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
-  UnselectedColour: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
+  SelectedColour: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+  UnselectedColour: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
 --- !u!1 &4488138006425018344
 GameObject:
   m_ObjectHideFlags: 0
