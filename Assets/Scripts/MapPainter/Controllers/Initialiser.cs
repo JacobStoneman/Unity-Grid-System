@@ -7,7 +7,6 @@ using System;
 
 public class Initialiser : MonoBehaviour
 {
-	[SerializeField] TMP_Dropdown loadDropdown;
 	[SerializeField] StringVariable exportPath;
 	string[] allfiles;
 	private void Awake()
@@ -17,11 +16,9 @@ public class Initialiser : MonoBehaviour
 		{
 			Directory.CreateDirectory(exportPath.value);
 		}
-
-		AddOptions();
 	}
 
-	public void AddOptions()
+	public void AddOptions(TMP_Dropdown loadDropdown)
 	{
 		allfiles = Directory.GetFiles(exportPath.value, "*.*", SearchOption.AllDirectories);
 		List<string> formatted = new List<string>();
